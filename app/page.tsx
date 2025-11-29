@@ -5,7 +5,7 @@ import React from "react";
 
 export default function FosterAgencyPage() {
   return (
-    <div className="font-display bg-background-light dark:bg-background-dark text-[#333] dark:text-gray-200">
+    <div className="bg-[#f8fafc] dark:bg-[#0a0a0a] text-[#333] dark:text-gray-200">
       <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
         <div className="flex h-full grow flex-col">
           <main>
@@ -27,7 +27,7 @@ export default function FosterAgencyPage() {
                     </h2>
                   </div>
 
-                  <button className="rounded-xl h-12 px-5 bg-primary text-white text-base font-bold hover:opacity-90 transition-opacity @[480px]:h-14 @[480px]:text-lg">
+                  <button className="rounded-xl h-12 px-5 bg-[#2563eb] text-white text-base font-bold hover:opacity-90 transition-opacity @[480px]:h-14 @[480px]:text-lg">
                     Become a Foster Parent
                   </button>
                 </div>
@@ -43,7 +43,7 @@ export default function FosterAgencyPage() {
                 ].map((item) => (
                   <div
                     key={item.label}
-                    className="flex flex-col items-center gap-2 text-center rounded-xl p-6 border bg-white dark:bg-background-dark dark:border-gray-700"
+                    className="flex flex-col items-center gap-2 text-center rounded-xl p-6 border bg-white dark:bg-[#0a0a0a] dark:border-gray-700"
                   >
                     <p className="text-gray-700 dark:text-gray-300 text-base font-medium">
                       {item.label}
@@ -86,7 +86,7 @@ export default function FosterAgencyPage() {
                     },
                   ].map((step) => (
                     <div key={step.title} className="flex flex-col items-center p-6 text-center">
-                      <div className="size-16 flex items-center justify-center rounded-full bg-primary/20 text-primary mb-4">
+                      <div className="size-16 flex items-center justify-center rounded-full bg-[#2563eb]/20 text-[#2563eb] mb-4">
                         <span className="material-symbols-outlined text-4xl">
                           {step.icon}
                         </span>
@@ -109,7 +109,7 @@ export default function FosterAgencyPage() {
                   </h2>
                 </div>
 
-                <div className="flex flex-col md:flex-row items-center gap-8 bg-white dark:bg-background-dark p-8 rounded-xl shadow-lg border dark:border-gray-700">
+                <div className="flex flex-col md:flex-row items-center gap-8 bg-white dark:bg-[#0a0a0a] p-8 rounded-xl shadow-lg border dark:border-gray-700">
                   <Image
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaoZyiBnH5h7D_Dw6JlzwS9AxuXdS-RCwiBRl0nfSzny-RzpE2QESuSLaayrwQ5lMAmNSej3q2Qmh8sOWWQBAGN0ZWXBnPlKsATo_nPIgAo3htrpPZicouF4bLmkjcSxIEgfr0iMDi89w9k-q5gl9mHMnIGHnwJeoBGVdnX328lZg6EOhqUsGyNbt_95zAD7P2myLam1QbgQ6HzukWluqa2BDli-lnLvalXyawb2_BBxX8RjJUwEn7R92yDdMOOgf_xanlAdDvNw"
                     alt="Portrait of Sarah Johnson"
