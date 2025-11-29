@@ -5,7 +5,7 @@ import React from "react";
 
 export default function FosterAgencyPage() {
   return (
-    <div className="font-display bg-background-light dark:bg-background-dark text-[#333] dark:text-gray-200">
+    <div className="font-display bg-background-light text-[#333]">
       <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
         <div className="flex h-full grow flex-col">
           <main>
@@ -43,12 +43,12 @@ export default function FosterAgencyPage() {
                 ].map((item) => (
                   <div
                     key={item.label}
-                    className="flex flex-col items-center gap-2 text-center rounded-xl p-6 border bg-white dark:bg-background-dark dark:border-gray-700"
+                    className="flex flex-col items-center gap-2 text-center rounded-xl p-6 border bg-white"
                   >
-                    <p className="text-gray-700 dark:text-gray-300 text-base font-medium">
+                    <p className="text-gray-700 text-base font-medium">
                       {item.label}
                     </p>
-                    <p className="text-gray-900 dark:text-white text-4xl font-bold">
+                    <p className="text-gray-900 text-4xl font-bold">
                       {item.value}
                     </p>
                   </div>
@@ -56,13 +56,13 @@ export default function FosterAgencyPage() {
               </div>
             </section>
 
-            <section className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 py-16 bg-white dark:bg-black/20">
+            <section className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 py-16 bg-white">
               <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-12">
                   <h2 className="text-3xl md:text-4xl font-bold">
                     How Foster Care Works
                   </h2>
-                  <p className="mt-4 text-gray-600 dark:text-gray-400">
+                  <p className="mt-4 text-gray-600">
                     Your journey to making a difference is a few simple steps away.
                   </p>
                 </div>
@@ -92,7 +92,7 @@ export default function FosterAgencyPage() {
                         </span>
                       </div>
                       <h3 className="text-xl font-bold">{step.title}</h3>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm">
+                      <p className="text-gray-600 text-sm">
                         {step.text}
                       </p>
                     </div>
@@ -109,7 +109,7 @@ export default function FosterAgencyPage() {
                   </h2>
                 </div>
 
-                <div className="flex flex-col md:flex-row items-center gap-8 bg-white dark:bg-background-dark p-8 rounded-xl shadow-lg border dark:border-gray-700">
+                <div className="flex flex-col md:flex-row items-center gap-8 bg-white p-8 rounded-xl shadow-lg border">
                   <Image
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaoZyiBnH5h7D_Dw6JlzwS9AxuXdS-RCwiBRl0nfSzny-RzpE2QESuSLaayrwQ5lMAmNSej3q2Qmh8sOWWQBAGN0ZWXBnPlKsATo_nPIgAo3htrpPZicouF4bLmkjcSxIEgfr0iMDi89w9k-q5gl9mHMnIGHnwJeoBGVdnX328lZg6EOhqUsGyNbt_95zAD7P2myLam1QbgQ6HzukWluqa2BDli-lnLvalXyawb2_BBxX8RjJUwEn7R92yDdMOOgf_xanlAdDvNw"
                     alt="Portrait of Sarah Johnson"
