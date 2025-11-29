@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@theme {
+  --font-display: var(--font-geist-sans);
+  --color-background-light: #f8fafc;
+  --color-background-dark: #0a0a0a;
+  --color-primary: #2563eb;
+}
+
 body {
   font-family: var(--font-geist-sans);
 }
