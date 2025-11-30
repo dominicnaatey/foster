@@ -167,9 +167,9 @@ export default function FosterAgencyPage() {
                         className="w-full h-48 object-cover"
                       />
 
-                      <div className="p-6 flex flex-col flex-grow">
+                      <div className="p-6 flex flex-col grow">
                         <h3 className="font-bold text-lg">{post.title}</h3>
-                        <p className="text-gray-600 text-sm mt-2 flex-grow">
+                        <p className="text-gray-600 text-sm mt-2 grow">
                           {post.text}
                         </p>
                         <a className="font-bold text-sm text-primary hover:underline mt-4">
