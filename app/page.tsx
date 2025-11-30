@@ -56,7 +56,7 @@ export default function FosterAgencyPage() {
               </div>
             </section>
 
-            <section className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 py-16 bg-white">
+            <section id="how-it-works" className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 py-16 bg-white">
               <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-12">
                   <h2 className="text-3xl md:text-4xl font-bold">
@@ -128,7 +128,7 @@ export default function FosterAgencyPage() {
               </div>
             </section>
 
-            <section className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 py-16 bg-white">
+            <section id="blog" className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 py-16 bg-white">
               <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-12">
                   <h2 className="text-3xl md:text-4xl font-bold">From Our Blog</h2>
@@ -182,7 +182,7 @@ export default function FosterAgencyPage() {
               </div>
             </section>
 
-            <section className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 py-16 bg-soft-yellow text-center">
+            <section id="cta" className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 py-16 bg-soft-yellow text-center">
               <h2 className="text-3xl font-bold">Ready to Make a Lifelong Impact?</h2>
               <p className="mt-4 text-gray-700">
                 Whether you can offer a home or support our mission, your help is invaluable.
