@@ -2,9 +2,9 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <section className="w-full">
-      <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <section className="w-full h-screen">
+      <div className="h-full px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
+        <div className="grid h-full grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="w-full">
             <div className="relative overflow-hidden rounded-2xl">
               <Image
@@ -12,7 +12,7 @@ export default function HeroSection() {
                 alt="Community group"
                 width={960}
                 height={720}
-                className="w-full h-[420px] md:h-[520px] object-cover"
+                className="w-full h-[50vh] md:h-[65vh] object-cover"
                 priority
               />
             </div>
