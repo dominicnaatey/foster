@@ -5,7 +5,7 @@ import HeroSection from "@/components/HeroSection";
 import StatsSection from "@/components/StatsSection";
 import HowItWorks from "@/components/HowItWorks";
 import Testimonials from "@/components/Testimonials";
-import Blog from "@/components/Blog";
+import BlogSection from "@/components/BlogSection";
 import CtaSection from "@/components/CtaSection";
 
 export default function FosterAgencyPage() {
@@ -18,7 +18,7 @@ export default function FosterAgencyPage() {
             <StatsSection />
             <HowItWorks />
             <Testimonials />
-            <Blog />
+            <BlogSection />
             <CtaSection />
           </main>
         </div>

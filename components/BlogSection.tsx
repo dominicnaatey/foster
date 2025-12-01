@@ -18,7 +18,7 @@ const posts = [
   },
 ];
 
-export default function Blog() {
+export default function BlogSection() {
   return (
     <section id="blog" className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 py-16 bg-white">
       <div className="max-w-6xl mx-auto">
