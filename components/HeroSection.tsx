@@ -1,5 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
+// removed unused Link
+import Button from "@/components/Button";
 
 export default function HeroSection() {
   return (
@@ -29,12 +30,8 @@ export default function HeroSection() {
               Providing therapeutic enrichment and stable community-based care for boys ages 9–18
             </p>
             <div className="flex items-center gap-4">
-              <Link href="#cta" className="rounded-full h-12 px-6 bg-primary text-white font-bold hover:opacity-90">
-                Get Involved
-              </Link>
-              <Link href="#how-it-works" className="rounded-full h-12 px-6 border border-gray-300 text-gray-800 font-bold hover:bg-gray-100">
-                Learn More
-              </Link>
+              <Button href="#cta" variant="black">Get Involved</Button>
+              <Button href="#how-it-works" variant="outline">Learn More</Button>
             </div>
           </div>
         </div>
