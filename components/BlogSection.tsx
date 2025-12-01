@@ -28,7 +28,7 @@ export default function BlogSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => (
-            <div key={post.title} className="flex flex-col bg-white rounded-xl overflow-hidden shadow-md border">
+            <div key={post.title} className="flex flex-col bg-white rounded-xl overflow-hidden shadow-md">
               <Image src={post.img} alt={post.title} width={500} height={300} className="w-full h-48 object-cover" />
               <div className="p-6 flex flex-col grow">
                 <h3 className="font-bold text-lg">{post.title}</h3>

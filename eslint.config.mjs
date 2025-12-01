@@ -8,6 +8,7 @@ const eslintConfig = defineConfig([
   {
     rules: {
       "@next/next/no-page-custom-font": "off",
+      "@next/next/no-img-element": "off",
     },
   },
   globalIgnores([
