@@ -7,7 +7,7 @@ export default function HeroSection() {
     <section className="bg-white w-full h-screen">
       <div className="h-full px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
         <div className="grid h-full max-w-6xl mx-auto grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="w-full">
+          <div className="w-full order-2 md:order-1">
             <div className="relative overflow-hidden rounded-2xl">
               <Image
                 src="/hero-bg.jpg"
@@ -20,7 +20,7 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-6 md:pl-8">
+          <div className="order-1 md:order-2 flex flex-col gap-6 md:pl-8">
             <h1 className="text-4xl md:text-5xl font-black leading-tight">
               Trauma-informed, person-centered 
               {" "}
