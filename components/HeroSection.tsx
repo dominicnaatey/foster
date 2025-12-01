@@ -8,7 +8,7 @@ export default function HeroSection() {
           <div className="w-full">
             <div className="relative overflow-hidden rounded-2xl">
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfcfKYoC6MORc0EG4a_FPs_yw-VOy7Py8nUGtEB80V2RTZCjYCH7dtcXMWfdPMJKXv320NaKtgvBjF1VVO0B8RHd8c7240c4exlKgp-U2O3t9flO5hObWzRuA81a1Y1XISSPaC3LRaZrXEwzDc3hnfSbNJAXGgh0XlkGvx941G0Ult09iwa08wuzBUQxy5Q9LZZsgKp0f_nHq-bJeNTKjA_eaOJYKkAow_Nu7ppOhxYTjxsVB42emphWI_IZ7VukpcUargus1-og"
+                src="/hero-bg.jpg"
                 alt="Community group"
                 width={960}
                 height={720}
