@@ -4,7 +4,7 @@ import Button from "@/components/Button";
 
 export default function HeroSection() {
   return (
-    <section className="w-full h-screen">
+    <section className="bg-white w-full h-screen">
       <div className="h-full px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
         <div className="grid h-full max-w-6xl mx-auto grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="w-full">
@@ -24,9 +24,9 @@ export default function HeroSection() {
             <h1 className="text-4xl md:text-5xl font-black leading-tight">
               Trauma-informed, person-centered 
               {" "}
-              <span className="text-primary italic">foster care for youth</span>
+              <span className="text-primary">foster care for youth</span>
             </h1>
-            <p className="text-gray-700 md:text-lg">
+            <p className="text-gray-700 md:text-xl font-semibold">
               Providing therapeutic enrichment and stable community-based care for boys ages 9–18
             </p>
             <div className="flex items-center gap-4">

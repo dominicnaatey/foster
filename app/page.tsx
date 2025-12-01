@@ -10,12 +10,17 @@ import CtaSection from "@/components/CtaSection";
 
 export default function FosterAgencyPage() {
   return (
-    <div className="font-display bg-background-light text-[#333]">
+    <div className="font-display bg-white text-[#333]">
       <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
         <div className="flex h-full grow flex-col">
           <main>
             <HeroSection />
-            <CareSection />
+            <section>
+              <div className="mx-auto px-4">
+                <CareSection />
+              </div>
+            </section>
+
             <HowItWorks />
             <Testimonials />
             <BlogSection />
