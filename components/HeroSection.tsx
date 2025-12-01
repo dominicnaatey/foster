@@ -4,7 +4,7 @@ export default function HeroSection() {
   return (
     <section className="w-full h-screen">
       <div className="h-full px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
-        <div className="grid h-full grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className="grid h-full max-w-6xl mx-auto grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="w-full">
             <div className="relative overflow-hidden rounded-2xl">
               <Image
