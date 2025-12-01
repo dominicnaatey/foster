@@ -2,7 +2,7 @@
 
 import React from "react";
 import HeroSection from "@/components/HeroSection";
-import StatsSection from "@/components/StatsSection";
+import CareSection from "@/components/CareSection";
 import HowItWorks from "@/components/HowItWorks";
 import Testimonials from "@/components/Testimonials";
 import BlogSection from "@/components/BlogSection";
@@ -15,7 +15,7 @@ export default function FosterAgencyPage() {
         <div className="flex h-full grow flex-col">
           <main>
             <HeroSection />
-            <StatsSection />
+            <CareSection />
             <HowItWorks />
             <Testimonials />
             <BlogSection />
