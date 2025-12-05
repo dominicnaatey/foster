@@ -25,14 +25,14 @@ export default function GalleryPage() {
 
           {/* Chips */}
           <div className="px-4 sm:px-6">
-            <div className="flex justify-center sm:justify-start gap-2">
+            <div className="tabs-scroll flex gap-2 justify-start overflow-x-auto overscroll-contain touch-pan-x whitespace-nowrap -mx-4 px-4 sm:mx-0 sm:px-0 snap-x snap-mandatory md:overflow-visible md:whitespace-normal">
               {(["All", "Events", "Success Stories", "Our Homes", "Community"] as const).map((tab) => (
                 <button
                   key={tab}
                   role="tab"
                   aria-selected={activeTab === tab}
                   className={
-                    `inline-flex items-center rounded-full px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30 ` +
+                    `inline-flex items-center rounded-full px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30 shrink-0 snap-start ` +
                     (activeTab === tab
                       ? "bg-black text-white shadow-sm"
                       : "bg-slate-200 text-[#0d141b] hover:bg-slate-300")
