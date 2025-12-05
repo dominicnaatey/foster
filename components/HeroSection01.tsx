@@ -146,9 +146,24 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
   if (responsiveSize?.xl) sizeClass += " " + SIZE_XL[responsiveSize.xl];
   if (responsiveSize?.["2xl"]) sizeClass += " " + SIZE_2XL_BP[responsiveSize["2xl"]];
 
-  const rot = rotationByBreakpoint
-    ? rotationByBreakpoint[bp] ?? rotationByBreakpoint.base ?? rotation
-    : rotation;
+  const rot = (() => {
+    if (!rotationByBreakpoint) return rotation;
+    const order: Array<"base" | "sm" | "md" | "lg" | "xl" | "2xl"> = [
+      "base",
+      "sm",
+      "md",
+      "lg",
+      "xl",
+      "2xl",
+    ];
+    const idx = order.indexOf(bp);
+    for (let i = idx; i >= 0; i--) {
+      const key = order[i];
+      const val = rotationByBreakpoint[key];
+      if (typeof val === "number") return val;
+    }
+    return rotation;
+  })();
 
   const CLAMP: Record<CardSize, string> = {
     xs: "clamp(7rem, 16vw, 9rem)",
@@ -275,7 +290,7 @@ export default function HeroSection01({
               responsiveSize={{ base: "md", md: "lg", lg: "2xl" }}
               src={images[1].src}
               alt={images[1].alt}
-              rotationByBreakpoint={{ base: -25, md: -45, lg: -60 }}
+              rotationByBreakpoint={{ base: -12, md: -45}}
               delay={0.5}
             />
           </div>
