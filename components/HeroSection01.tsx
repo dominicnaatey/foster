@@ -48,12 +48,12 @@ type FloatingImageCardProps = {
   size?: CardSize;
   fluid?: boolean;
   responsiveSize?: Partial<{
-    xs: CardSize;
     base: CardSize;
     sm: CardSize;
     md: CardSize;
     lg: CardSize;
     xl: CardSize;
+    "2xl": CardSize;
   }>;
 };
 
@@ -69,23 +69,58 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
 }) => {
   const SIZE_BASE: Record<CardSize, string> = {
     xs: "w-24 h-24",
-    sm: "w-36 h-36",
+    sm: "w-32 h-32",
     md: "w-40 h-40",
     lg: "w-48 h-48",
     xl: "w-56 h-56",
     "2xl": "w-64 h-64",
   };
-  const prefix = (cls: string, bp: "xs" | "sm" | "md" | "lg" | "xl") =>
-    cls
-      .split(" ")
-      .map((c) => `${bp}:${c}`)
-      .join(" ");
+  const SIZE_SM: Record<CardSize, string> = {
+    xs: "sm:w-24 sm:h-24",
+    sm: "sm:w-32 sm:h-32",
+    md: "sm:w-40 sm:h-40",
+    lg: "sm:w-48 sm:h-48",
+    xl: "sm:w-56 sm:h-56",
+    "2xl": "sm:w-64 sm:h-64",
+  };
+  const SIZE_MD: Record<CardSize, string> = {
+    xs: "md:w-24 md:h-24",
+    sm: "md:w-32 md:h-32",
+    md: "md:w-40 md:h-40",
+    lg: "md:w-48 md:h-48",
+    xl: "md:w-56 md:h-56",
+    "2xl": "md:w-64 md:h-64",
+  };
+  const SIZE_LG: Record<CardSize, string> = {
+    xs: "lg:w-24 lg:h-24",
+    sm: "lg:w-32 lg:h-32",
+    md: "lg:w-40 lg:h-40",
+    lg: "lg:w-48 lg:h-48",
+    xl: "lg:w-56 lg:h-56",
+    "2xl": "lg:w-64 lg:h-64",
+  };
+  const SIZE_XL: Record<CardSize, string> = {
+    xs: "xl:w-24 xl:h-24",
+    sm: "xl:w-32 xl:h-32",
+    md: "xl:w-40 xl:h-40",
+    lg: "xl:w-48 xl:h-48",
+    xl: "xl:w-56 xl:h-56",
+    "2xl": "xl:w-64 xl:h-64",
+  };
+  const SIZE_2XL_BP: Record<CardSize, string> = {
+    xs: "2xl:w-24 2xl:h-24",
+    sm: "2xl:w-32 2xl:h-32",
+    md: "2xl:w-40 2xl:h-40",
+    lg: "2xl:w-48 2xl:h-48",
+    xl: "2xl:w-56 2xl:h-56",
+    "2xl": "2xl:w-64 2xl:h-64",
+  };
   let sizeClass = SIZE_BASE[responsiveSize?.base ?? size];
-  if (responsiveSize?.xs) sizeClass += " " + prefix(SIZE_BASE[responsiveSize.xs], "xs");
-  if (responsiveSize?.sm) sizeClass += " " + prefix(SIZE_BASE[responsiveSize.sm], "sm");
-  if (responsiveSize?.md) sizeClass += " " + prefix(SIZE_BASE[responsiveSize.md], "md");
-  if (responsiveSize?.lg) sizeClass += " " + prefix(SIZE_BASE[responsiveSize.lg], "lg");
-  if (responsiveSize?.xl) sizeClass += " " + prefix(SIZE_BASE[responsiveSize.xl], "xl");
+  if (responsiveSize?.sm) sizeClass += " " + SIZE_SM[responsiveSize.sm];
+  if (responsiveSize?.md) sizeClass += " " + SIZE_MD[responsiveSize.md];
+  if (responsiveSize?.lg) sizeClass += " " + SIZE_LG[responsiveSize.lg];
+  if (responsiveSize?.xl) sizeClass += " " + SIZE_XL[responsiveSize.xl];
+  if (responsiveSize?.["2xl"]) sizeClass += " " + SIZE_2XL_BP[responsiveSize["2xl"]];
 
   const CLAMP: Record<CardSize, string> = {
     xs: "clamp(7rem, 16vw, 9rem)",
@@ -125,11 +160,6 @@ type HeroSection02Props = {
 };
 
 export default function HeroSection01({
-  headline = ["A New Direction", "For Youth, LLC"],
-  subheadline = [
-    "Providing Therapeutic Enrichment And Stable",
-    "Community-Based Care For Boys Ages 9–18",
-  ],
   learnMoreHref = "#",
   getInvolvedHref = "#",
   className,
@@ -167,12 +197,18 @@ export default function HeroSection01({
   ],
 }: HeroSection02Props) {
   const positions = [
-    "absolute top-8 md:top-36 left-4 md:left-4 lg:left-4 animate-float",
-    "absolute top-12 md:top-36 right-4 md:right-8 lg:right-4 animate-float-slow",
-    "absolute bottom-32 md:bottom-48 left-8 md:left-24 lg:left-32 animate-float-slow",
-    "absolute bottom-48 md:bottom-20 left-[calc(100%/3.3)] -translate-x-1/2 animate-float hidden md:block",
-    "absolute bottom-48 md:bottom-20 right-[calc(100%/3.3)] translate-x-1/2 animate-float-slow hidden md:block",
+    // bottom left
+    "absolute bottom-92 md:top-36 left-4 md:left-4 lg:left-4 animate-float",
+    // Bottom right
+    "absolute bottom-92 md:top-36 right-4 md:right-8 lg:right-4 animate-float-slow",
+    // bottom right
     "absolute bottom-32 md:bottom-48 right-8 md:right-24 lg:right-32 animate-float",
+    // bottom center left
+    "absolute bottom-48 md:bottom-20 left-[calc(100%/3.3)] -translate-x-1/2 animate-float hidden md:block",
+    // bottom center right
+    "absolute bottom-48 md:bottom-20 right-[calc(100%/3.3)] translate-x-1/2 animate-float-slow hidden md:block",
+    // bottom left
+    "absolute bottom-32 md:bottom-48 left-8 md:left-24 lg:left-32 animate-float-slow",
   ];
 
   return (
@@ -180,13 +216,11 @@ export default function HeroSection01({
       <div className="relative mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-44 text-center h-full">
         <div className="relative z-10 space-y-4">
           <h1 className="font-display text-slate-900 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-            {headline[0]}
+            A New Direction <br/>For Youth, LLC
           </h1>
-          <h1 className="font-display text-slate-900 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-            {headline[1]}
-          </h1>
-          <p className="text-slate-700 text-base sm:text-lg">{subheadline[0]}</p>
-          <p className="text-slate-700 text-base sm:text-lg">{subheadline[1]}</p>
+          <p className="text-slate-700 text-base sm:text-lg">
+            Providing Therapeutic Enrichment And Stable <br/> Community-Based Care For Boys Ages 9–18,
+          </p>
           <div className="mt-8 flex items-center justify-center gap-4">
             <Button variant="hero" size="xl" href={learnMoreHref}>Learn More</Button>
             <Button variant="hero-outline" size="xl" href={getInvolvedHref}>Get Involved</Button>
@@ -228,18 +262,7 @@ export default function HeroSection01({
               delay={0.3}
             />
           </div>
-          {/* Bottom right */}
-          <div className={positions[5]}>
-            <FloatingImageCard
-              fluid
-              responsiveSize={{ base: "sm", md: "lg", lg: "2xl" }}
-              src={images[5].src}
-              alt={images[5].alt}
-              rotation={-12}
-              delay={0.6}
-            />
-          </div>
-           {/* Bottom center left */}
+          {/* Bottom center left */}
           <div className={positions[3]}>
             <FloatingImageCard
               fluid
@@ -254,13 +277,25 @@ export default function HeroSection01({
           <div className={positions[4]}>
             <FloatingImageCard
               fluid
-              responsiveSize={{ md: "xl", lg: "2xl" }}
+              responsiveSize={{ md: "sm", lg: "2xl" }}
               src={images[4].src}
               alt={images[4].alt}
               rotation={14}
               delay={0.4}
             />
           </div>
+          {/* Bottom right */}
+          <div className={positions[5]}>
+            <FloatingImageCard
+              fluid
+              responsiveSize={{ base: "md", md: "md", lg: "2xl" }}
+              src={images[5].src}
+              alt={images[5].alt}
+              rotation={-12}
+              delay={0.6}
+            />
+          </div>
+
         </div>
       </div>
     </section>
