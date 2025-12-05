@@ -203,6 +203,7 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
         width: responsiveSize ? undefined : fluid ? CLAMP[size] : undefined,
         height: responsiveSize ? undefined : fluid ? CLAMP[size] : undefined,
       }}
+      variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}
       initial={{ y: 0, rotate: rot }}
       animate={{ y: [0, -floatAmplitude, 0, floatAmplitude, 0], rotate: rot }}
       transition={{ duration, repeat: Infinity, ease: "easeInOut", delay }}
@@ -295,21 +296,53 @@ export default function HeroSection01({
       onMouseLeave={handleMouseLeave}
     >
       <div className="relative mx-auto px-4 sm:px-6 lg:px-8 pt-12 lg:pt-28 pb-44 text-center h-full">
-        <div className="relative z-10 space-y-4">
-          <h1 className="font-display text-slate-900 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+        <motion.div
+          className="relative z-10 space-y-4"
+          initial="hidden"
+          animate="show"
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            show: { opacity: 1, y: 0, transition: { staggerChildren: 0.15 } },
+          }}
+        >
+          <motion.h1
+            className="font-display text-slate-900 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
+            variants={{ hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0 } }}
+          >
             A New Direction <br/>For Youth, LLC
-          </h1>
-          <p className="text-slate-700 text-base sm:text-lg">
+          </motion.h1>
+          <motion.p
+            className="text-slate-700 text-base sm:text-lg"
+            variants={{ hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0 } }}
+          >
             Providing Therapeutic Enrichment And Stable <br/> Community-Based Care For Boys Ages 9–18,
-          </p>
-          <div className="mt-8 flex items-center justify-center gap-4">
-            <Button variant="hero" size="xl" href={learnMoreHref}>Learn More</Button>
-            <Button variant="hero-outline" size="xl" href={getInvolvedHref}>Get Involved</Button>
-          </div>
-        </div>
+          </motion.p>
+          <motion.div
+            className="mt-8 flex items-center justify-center gap-4"
+            variants={{
+              hidden: { opacity: 0, y: 24 },
+              show: { opacity: 1, y: 0, transition: { staggerChildren: 0.2 } },
+            }}
+          >
+            <motion.div variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}>
+              <Button variant="hero" size="xl" href={learnMoreHref}>Learn More</Button>
+            </motion.div>
+            <motion.div variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}>
+              <Button variant="hero-outline" size="xl" href={getInvolvedHref}>Get Involved</Button>
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
         {/* Floating Images */}
-        <div className="pointer-events-none select-none z-0">
+        <motion.div
+          className="pointer-events-none select-none z-0"
+          initial="hidden"
+          animate="show"
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
+          }}
+        >
             {/* Top left */}
           <div className={positions[0]}>
             <FloatingImageCard
@@ -393,7 +426,7 @@ export default function HeroSection01({
             />
           </div>
 
-        </div>
+        </motion.div>
       </div>
     </section>
   );
