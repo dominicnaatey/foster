@@ -44,6 +44,14 @@ type FloatingImageCardProps = {
   alt: string;
   className?: string;
   rotation?: number;
+  rotationByBreakpoint?: Partial<{
+    base: number;
+    sm: number;
+    md: number;
+    lg: number;
+    xl: number;
+    "2xl": number;
+  }>;
   delay?: number;
   size?: CardSize;
   fluid?: boolean;
@@ -62,11 +70,27 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
   alt,
   className,
   rotation = 0,
+  rotationByBreakpoint,
   delay = 0,
   size = "md",
   fluid = true,
   responsiveSize,
 }) => {
+  const [bp, setBp] = React.useState<"base" | "sm" | "md" | "lg" | "xl" | "2xl">("base");
+  React.useEffect(() => {
+    const calc = () => {
+      const w = window.innerWidth;
+      if (w >= 1536) setBp("2xl");
+      else if (w >= 1280) setBp("xl");
+      else if (w >= 1024) setBp("lg");
+      else if (w >= 768) setBp("md");
+      else if (w >= 640) setBp("sm");
+      else setBp("base");
+    };
+    calc();
+    window.addEventListener("resize", calc);
+    return () => window.removeEventListener("resize", calc);
+  }, []);
   const SIZE_BASE: Record<CardSize, string> = {
     xs: "w-24 h-24",
     sm: "w-32 h-32",
@@ -122,6 +146,10 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
   if (responsiveSize?.xl) sizeClass += " " + SIZE_XL[responsiveSize.xl];
   if (responsiveSize?.["2xl"]) sizeClass += " " + SIZE_2XL_BP[responsiveSize["2xl"]];
 
+  const rot = rotationByBreakpoint
+    ? rotationByBreakpoint[bp] ?? rotationByBreakpoint.base ?? rotation
+    : rotation;
+
   const CLAMP: Record<CardSize, string> = {
     xs: "clamp(7rem, 16vw, 9rem)",
     sm: "clamp(8rem, 18vw, 11rem)",
@@ -139,7 +167,7 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
         className,
       )}
       style={{
-        transform: `rotate(${rotation}deg)`,
+        transform: `rotate(${rot}deg)`,
         animationDelay: `${delay}s`,
         width: responsiveSize ? undefined : fluid ? CLAMP[size] : undefined,
         height: responsiveSize ? undefined : fluid ? CLAMP[size] : undefined,
@@ -247,7 +275,7 @@ export default function HeroSection01({
               responsiveSize={{ base: "md", md: "lg", lg: "2xl" }}
               src={images[1].src}
               alt={images[1].alt}
-              rotation={-45}
+              rotationByBreakpoint={{ base: -25, md: -45, lg: -60 }}
               delay={0.5}
             />
           </div>
