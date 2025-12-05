@@ -187,12 +187,12 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
         className,
       )}
       style={{
-        transform: `rotate(${rot}deg)`,
+        willChange: "transform",
         width: responsiveSize ? undefined : fluid ? CLAMP[size] : undefined,
         height: responsiveSize ? undefined : fluid ? CLAMP[size] : undefined,
       }}
-      initial={{ y: 0 }}
-      animate={{ y: [0, -12, 0, 12, 0] }}
+      initial={{ y: 0, rotate: rot }}
+      animate={{ y: [0, -12, 0, 12, 0], rotate: rot }}
       transition={{ duration, repeat: Infinity, ease: "easeInOut", delay }}
     >
       <img src={src} alt={alt} className="w-full h-full object-cover" loading="lazy" />
@@ -248,17 +248,17 @@ export default function HeroSection01({
 }: HeroSection02Props) {
   const positions = [
     // bottom left
-    "absolute bottom-92 md:top-36 left-[-24] md:left-4 lg:left-4 animate-float",
+    "absolute bottom-92 md:top-36 left-[-24] md:left-4 lg:left-4",
     // Bottom right
-    "absolute bottom-92 md:top-36  right-[-24] md:right-8 lg:right-4 animate-float-slow",
+    "absolute bottom-92 md:top-36  right-[-24] md:right-8 lg:right-4",
     // bottom right
-    "absolute bottom-38 md:bottom-48 right-0 md:right-24 lg:right-32 animate-float",
+    "absolute bottom-38 md:bottom-48 right-0 md:right-24 lg:right-32",
     // bottom center left
-    "absolute bottom-48 md:bottom-20 left-[calc(100%/3)] -translate-x-1/2 animate-float hidden md:block",
+    "absolute bottom-72 md:bottom-20 left-1/2 md:left-[calc(100%/3)] -translate-x-1/2",
     // bottom center right
-    "absolute bottom-72 md:bottom-20 left-1/2 md:left-auto md:right-[calc(100%/3)] -translate-x-1/2 md:translate-x-1/2 animate-float-slow",
+    "absolute bottom-72 md:bottom-20 left-1/2 md:left-auto md:right-[calc(100%/3)] -translate-x-1/2 md:translate-x-1/2",
     // bottom left
-    "absolute bottom-38 md:bottom-48 left-0 md:left-24 lg:left-32 animate-float-slow",
+    "absolute bottom-38 md:bottom-48 left-0 md:left-24 lg:left-32",
   ];
 
   return (
@@ -317,10 +317,11 @@ export default function HeroSection01({
           <div className={positions[3]}>
             <FloatingImageCard
               fluid
-              responsiveSize={{ base: "md", md: "xl", lg: "2xl" }}
+              responsiveSize={{ base: "md", md: "2xl", lg: "2xl" }}
               src={images[3].src}
               alt={images[3].alt}
               rotation={-14}
+              floatSpeed="slow"
               delay={0.7}
             />
           </div>
