@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform, MotionValue } from "framer-motion";
 
 type CardSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
@@ -66,6 +66,10 @@ type FloatingImageCardProps = {
   }>;
   floatSpeed?: "normal" | "slow";
   floatAmplitude?: number;
+  mouseX?: MotionValue<number>;
+  mouseY?: MotionValue<number>;
+  parallaxStrengthX?: number;
+  parallaxStrengthY?: number;
 };
 
 const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
@@ -80,6 +84,10 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
   responsiveSize,
   floatSpeed = "normal",
   floatAmplitude = 12,
+  mouseX,
+  mouseY,
+  parallaxStrengthX = 24,
+  parallaxStrengthY = 12,
 }) => {
   const [bp, setBp] = React.useState<"base" | "sm" | "md" | "lg" | "xl" | "2xl">("base");
   React.useEffect(() => {
@@ -181,6 +189,9 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
 
   const duration = floatSpeed === "slow" ? 12 : 8;
 
+  const xParallax = mouseX ? useTransform(mouseX, (v) => v * parallaxStrengthX) : undefined;
+  const yParallax = mouseY ? useTransform(mouseY, (v) => v * parallaxStrengthY) : undefined;
+
   return (
     <motion.div
       className={cn(
@@ -190,6 +201,9 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
       )}
       style={{
         willChange: "transform",
+        x: xParallax,
+        // Keep float animation on y; only apply y parallax when float disabled
+        y: undefined,
         width: responsiveSize ? undefined : fluid ? CLAMP[size] : undefined,
         height: responsiveSize ? undefined : fluid ? CLAMP[size] : undefined,
       }}
@@ -249,6 +263,8 @@ export default function HeroSection01({
     },
   ],
 }: HeroSection02Props) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
   const positions = [
     // bottom left
     "absolute bottom-92 md:top-36 left-[-24] md:left-4 lg:left-4",
@@ -264,8 +280,24 @@ export default function HeroSection01({
     "absolute bottom-38 md:bottom-48 left-0 md:left-24 lg:left-32",
   ];
 
+  const handleMouseMove: React.MouseEventHandler<HTMLElement> = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const nx = ((e.clientX - rect.left) - rect.width / 2) / (rect.width / 2);
+    const ny = ((e.clientY - rect.top) - rect.height / 2) / (rect.height / 2);
+    mouseX.set(nx);
+    mouseY.set(ny);
+  };
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   return (
-    <section className={cx("relative w-full h-screen bg-gray-100 overflow-hidden", className)}>
+    <section
+      className={cx("relative w-full h-screen bg-gray-100 overflow-hidden", className)}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="relative mx-auto px-4 sm:px-6 lg:px-8 pt-12 lg:pt-28 pb-44 text-center h-full">
         <div className="relative z-10 space-y-4">
           <h1 className="font-display text-slate-900 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
@@ -290,6 +322,8 @@ export default function HeroSection01({
               src={images[0].src}
               alt={images[0].alt}
               rotationByBreakpoint={{ base: 12, md: 45}}
+              mouseX={mouseX}
+              parallaxStrengthX={-20}
               delay={0}
             />
           </div>
@@ -302,6 +336,8 @@ export default function HeroSection01({
               alt={images[1].alt}
               rotationByBreakpoint={{ base: -12, md: -45}}
               floatSpeed="slow"
+              mouseX={mouseX}
+              parallaxStrengthX={20}
               delay={0.5}
             />
           </div>
@@ -313,6 +349,8 @@ export default function HeroSection01({
               src={images[2].src}
               alt={images[2].alt}
               rotationByBreakpoint={{ base: 18, md: -12}}
+              mouseX={mouseX}
+              parallaxStrengthX={14}
               delay={0.3}
             />
           </div>
@@ -326,6 +364,8 @@ export default function HeroSection01({
               rotation={-14}
               floatSpeed="slow"
               floatAmplitude={24}
+              mouseX={mouseX}
+              parallaxStrengthX={-16}
               delay={0.7}
             />
           </div>
@@ -338,6 +378,8 @@ export default function HeroSection01({
               alt={images[4].alt}
               rotationByBreakpoint={{ base: 0, md: 14}}
               floatSpeed="normal"
+              mouseX={mouseX}
+              parallaxStrengthX={16}
               delay={0.4}
             />
           </div>
@@ -349,6 +391,8 @@ export default function HeroSection01({
               src={images[5].src}
               alt={images[5].alt}
               rotationByBreakpoint={{ base: -18, md: 12}}
+              mouseX={mouseX}
+              parallaxStrengthX={-12}
               delay={0.6}
             />
           </div>
