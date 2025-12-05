@@ -15,8 +15,9 @@ const Button: React.FC<{
   variant?: Variant;
   size?: Size;
   className?: string;
+  href?: string;
   children: React.ReactNode;
-}> = ({ variant = "hero", size = "md", className, children }) => {
+}> = ({ variant = "hero", size = "md", className, href, children }) => {
   const base =
     "inline-flex items-center justify-center font-medium rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2";
   const styles =
@@ -24,7 +25,14 @@ const Button: React.FC<{
       ? "border border-gray-900 text-gray-900 bg-white hover:bg-gray-100"
       : "bg-black text-white hover:opacity-90";
   const padding = size === "xl" ? "px-8 py-3 text-base" : "px-4 py-2 text-sm";
-  return <button className={cx(base, styles, padding, className)}>{children}</button>;
+  const cls = cx(base, styles, padding, className);
+  return href ? (
+    <a href={href} className={cls}>
+      {children}
+    </a>
+  ) : (
+    <button className={cls}>{children}</button>
+  );
 };
 
 function cn(...classes: Array<string | false | null | undefined>) {
@@ -40,6 +48,7 @@ type FloatingImageCardProps = {
   size?: CardSize;
   fluid?: boolean;
   responsiveSize?: Partial<{
+    xs: CardSize;
     base: CardSize;
     sm: CardSize;
     md: CardSize;
@@ -59,19 +68,20 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
   responsiveSize,
 }) => {
   const SIZE_BASE: Record<CardSize, string> = {
-    xs: "w-32 h-32",
+    xs: "w-24 h-24",
     sm: "w-36 h-36",
     md: "w-40 h-40",
     lg: "w-48 h-48",
     xl: "w-56 h-56",
     "2xl": "w-64 h-64",
   };
-  const prefix = (cls: string, bp: "sm" | "md" | "lg" | "xl") =>
+  const prefix = (cls: string, bp: "xs" | "sm" | "md" | "lg" | "xl") =>
     cls
       .split(" ")
       .map((c) => `${bp}:${c}`)
       .join(" ");
   let sizeClass = SIZE_BASE[responsiveSize?.base ?? size];
+  if (responsiveSize?.xs) sizeClass += " " + prefix(SIZE_BASE[responsiveSize.xs], "xs");
   if (responsiveSize?.sm) sizeClass += " " + prefix(SIZE_BASE[responsiveSize.sm], "sm");
   if (responsiveSize?.md) sizeClass += " " + prefix(SIZE_BASE[responsiveSize.md], "md");
   if (responsiveSize?.lg) sizeClass += " " + prefix(SIZE_BASE[responsiveSize.lg], "lg");
@@ -178,12 +188,14 @@ export default function HeroSection01({
           <p className="text-slate-700 text-base sm:text-lg">{subheadline[0]}</p>
           <p className="text-slate-700 text-base sm:text-lg">{subheadline[1]}</p>
           <div className="mt-8 flex items-center justify-center gap-4">
-            <Button variant="hero" size="xl">Learn More</Button>
-            <Button variant="hero-outline" size="xl">Get Involved</Button>
+            <Button variant="hero" size="xl" href={learnMoreHref}>Learn More</Button>
+            <Button variant="hero-outline" size="xl" href={getInvolvedHref}>Get Involved</Button>
           </div>
         </div>
 
+        {/* Floating Images */}
         <div className="pointer-events-none select-none z-0">
+            {/* Top left */}
           <div className={positions[0]}>
             <FloatingImageCard
               fluid
@@ -194,6 +206,7 @@ export default function HeroSection01({
               delay={0}
             />
           </div>
+          {/* Top right */}
           <div className={positions[1]}>
             <FloatingImageCard
               fluid
@@ -204,6 +217,7 @@ export default function HeroSection01({
               delay={0.5}
             />
           </div>
+          {/* Bottom left */}
           <div className={positions[2]}>
             <FloatingImageCard
               fluid
@@ -214,6 +228,7 @@ export default function HeroSection01({
               delay={0.3}
             />
           </div>
+          {/* Bottom right */}
           <div className={positions[5]}>
             <FloatingImageCard
               fluid
@@ -224,6 +239,7 @@ export default function HeroSection01({
               delay={0.6}
             />
           </div>
+           {/* Bottom center left */}
           <div className={positions[3]}>
             <FloatingImageCard
               fluid
@@ -234,10 +250,11 @@ export default function HeroSection01({
               delay={0.7}
             />
           </div>
+          {/* Bottom center right */}
           <div className={positions[4]}>
             <FloatingImageCard
               fluid
-              responsiveSize={{ base: "md", md: "xl", lg: "2xl" }}
+              responsiveSize={{ md: "xl", lg: "2xl" }}
               src={images[4].src}
               alt={images[4].alt}
               rotation={14}
