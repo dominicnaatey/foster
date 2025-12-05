@@ -70,7 +70,7 @@ type FloatingImageCardProps = {
   parallaxStrengthX?: number;
 };
 
-const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
+export const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
   src,
   alt,
   className,
