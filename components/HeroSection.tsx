@@ -20,7 +20,7 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="order-1 md:order-2 flex flex-col gap-6 md:pl-8 items-center md:items-start text-center md:text-left">
+          <div className="order-1 md:order-2 flex flex-col gap-4 md:pl-8 items-center md:items-start text-center md:text-left">
             <h1 className="text-3xl md:text-5xl font-black leading-tight">
               Trauma-informed, person-centered 
               {" "}

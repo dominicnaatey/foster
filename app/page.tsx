@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import HeroSection01 from "@/components/HeroSection01";
 import HeroSection from "@/components/HeroSection";
 import CareSection from "@/components/CareSection";
 import ProgramHighlights from "@/components/ProgramHighlights";
@@ -14,7 +15,8 @@ export default function FosterAgencyPage() {
       <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
         <div className="flex h-full grow flex-col">
           <main>
-            <HeroSection />
+            {/* <HeroSection /> */}
+            <HeroSection01 />
             <CareSection />
             <ProgramHighlights />
             <Testimonials />
