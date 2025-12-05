@@ -241,22 +241,22 @@ export default function HeroSection01({
 }: HeroSection02Props) {
   const positions = [
     // bottom left
-    "absolute bottom-92 md:top-36 left-4 md:left-4 lg:left-4 animate-float",
+    "absolute bottom-92 md:top-36 left-[-24] md:left-4 lg:left-4 animate-float",
     // Bottom right
-    "absolute bottom-92 md:top-36 right-4 md:right-8 lg:right-4 animate-float-slow",
+    "absolute bottom-92 md:top-36  right-[-24] md:right-8 lg:right-4 animate-float-slow",
     // bottom right
-    "absolute bottom-32 md:bottom-48 right-8 md:right-24 lg:right-32 animate-float",
+    "absolute bottom-38 md:bottom-48 right-0 md:right-24 lg:right-32 animate-float",
     // bottom center left
     "absolute bottom-48 md:bottom-20 left-[calc(100%/3)] -translate-x-1/2 animate-float hidden md:block",
     // bottom center right
-    "absolute bottom-48 md:bottom-20 right-[calc(100%/3)] translate-x-1/2 animate-float-slow hidden md:block",
+    "absolute bottom-72 md:bottom-20 left-1/2 md:left-auto md:right-[calc(100%/3)] -translate-x-1/2 md:translate-x-1/2 animate-float-slow",
     // bottom left
-    "absolute bottom-32 md:bottom-48 left-8 md:left-24 lg:left-32 animate-float-slow",
+    "absolute bottom-38 md:bottom-48 left-0 md:left-24 lg:left-32 animate-float-slow",
   ];
 
   return (
     <section className={cx("relative w-full h-screen bg-gray-100 overflow-hidden", className)}>
-      <div className="relative mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-44 text-center h-full">
+      <div className="relative mx-auto px-4 sm:px-6 lg:px-8 pt-12 lg:pt-28 pb-44 text-center h-full">
         <div className="relative z-10 space-y-4">
           <h1 className="font-display text-slate-900 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
             A New Direction <br/>For Youth, LLC
@@ -276,10 +276,10 @@ export default function HeroSection01({
           <div className={positions[0]}>
             <FloatingImageCard
               fluid
-              responsiveSize={{ base: "md", md: "lg", lg: "2xl" }}
+              responsiveSize={{ base: "lg", md: "lg", lg: "2xl" }}
               src={images[0].src}
               alt={images[0].alt}
-              rotation={45}
+              rotationByBreakpoint={{ base: 12, md: 45}}
               delay={0}
             />
           </div>
@@ -287,7 +287,7 @@ export default function HeroSection01({
           <div className={positions[1]}>
             <FloatingImageCard
               fluid
-              responsiveSize={{ base: "md", md: "lg", lg: "2xl" }}
+              responsiveSize={{ base: "lg", md: "lg", lg: "2xl" }}
               src={images[1].src}
               alt={images[1].alt}
               rotationByBreakpoint={{ base: -12, md: -45}}
@@ -301,7 +301,7 @@ export default function HeroSection01({
               responsiveSize={{ base: "md", md: "lg", lg: "2xl" }}
               src={images[2].src}
               alt={images[2].alt}
-              rotation={-12}
+              rotationByBreakpoint={{ base: 18, md: -12}}
               delay={0.3}
             />
           </div>
@@ -320,10 +320,10 @@ export default function HeroSection01({
           <div className={positions[4]}>
             <FloatingImageCard
               fluid
-              responsiveSize={{ base: "md",md: "sm", lg: "2xl" }}
+              responsiveSize={{ base: "xs",md: "sm", lg: "2xl" }}
               src={images[4].src}
               alt={images[4].alt}
-              rotation={14}
+              rotationByBreakpoint={{ base: 0, md: 14}}
               delay={0.4}
             />
           </div>
@@ -334,7 +334,7 @@ export default function HeroSection01({
               responsiveSize={{ base: "md", md: "lg", lg: "2xl" }}
               src={images[5].src}
               alt={images[5].alt}
-              rotation={12}
+              rotationByBreakpoint={{ base: -18, md: 12}}
               delay={0.6}
             />
           </div>
