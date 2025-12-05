@@ -65,6 +65,7 @@ type FloatingImageCardProps = {
     "2xl": CardSize;
   }>;
   floatSpeed?: "normal" | "slow";
+  floatAmplitude?: number;
 };
 
 const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
@@ -78,6 +79,7 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
   fluid = true,
   responsiveSize,
   floatSpeed = "normal",
+  floatAmplitude = 12,
 }) => {
   const [bp, setBp] = React.useState<"base" | "sm" | "md" | "lg" | "xl" | "2xl">("base");
   React.useEffect(() => {
@@ -182,7 +184,7 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
   return (
     <motion.div
       className={cn(
-        "relative rounded-2xl overflow-hidden shadow-card transition-all duration-500 hover:shadow-card-hover hover:scale-105",
+        "relative rounded-2xl overflow-hidden shadow-card transition-all duration-500 hover:shadow-card-hover",
         sizeClass,
         className,
       )}
@@ -192,8 +194,9 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
         height: responsiveSize ? undefined : fluid ? CLAMP[size] : undefined,
       }}
       initial={{ y: 0, rotate: rot }}
-      animate={{ y: [0, -12, 0, 12, 0], rotate: rot }}
+      animate={{ y: [0, -floatAmplitude, 0, floatAmplitude, 0], rotate: rot }}
       transition={{ duration, repeat: Infinity, ease: "easeInOut", delay }}
+      whileHover={{ scale: 1.05 }}
     >
       <img src={src} alt={alt} className="w-full h-full object-cover" loading="lazy" />
     </motion.div>
@@ -254,7 +257,7 @@ export default function HeroSection01({
     // bottom right
     "absolute bottom-38 md:bottom-48 right-0 md:right-24 lg:right-32",
     // bottom center left
-    "absolute bottom-72 md:bottom-20 left-1/2 md:left-[calc(100%/3)] -translate-x-1/2",
+    "absolute hidden md:block bottom-0 md:bottom-20 left-1/2 md:left-[calc(100%/3)] -translate-x-1/2",
     // bottom center right
     "absolute bottom-72 md:bottom-20 left-1/2 md:left-auto md:right-[calc(100%/3)] -translate-x-1/2 md:translate-x-1/2",
     // bottom left
@@ -322,6 +325,7 @@ export default function HeroSection01({
               alt={images[3].alt}
               rotation={-14}
               floatSpeed="slow"
+              floatAmplitude={24}
               delay={0.7}
             />
           </div>
@@ -333,7 +337,7 @@ export default function HeroSection01({
               src={images[4].src}
               alt={images[4].alt}
               rotationByBreakpoint={{ base: 0, md: 14}}
-              floatSpeed="slow"
+              floatSpeed="normal"
               delay={0.4}
             />
           </div>
