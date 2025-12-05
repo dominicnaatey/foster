@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion, useMotionValue, useTransform, MotionValue } from "framer-motion";
+import { motion, useMotionValue, useTransform, MotionValue, useSpring } from "framer-motion";
 
 type CardSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
@@ -67,9 +67,7 @@ type FloatingImageCardProps = {
   floatSpeed?: "normal" | "slow";
   floatAmplitude?: number;
   mouseX?: MotionValue<number>;
-  mouseY?: MotionValue<number>;
   parallaxStrengthX?: number;
-  parallaxStrengthY?: number;
 };
 
 const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
@@ -85,9 +83,7 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
   floatSpeed = "normal",
   floatAmplitude = 12,
   mouseX,
-  mouseY,
   parallaxStrengthX = 24,
-  parallaxStrengthY = 12,
 }) => {
   const [bp, setBp] = React.useState<"base" | "sm" | "md" | "lg" | "xl" | "2xl">("base");
   React.useEffect(() => {
@@ -189,8 +185,10 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
 
   const duration = floatSpeed === "slow" ? 12 : 8;
 
-  const xParallax = mouseX ? useTransform(mouseX, (v) => v * parallaxStrengthX) : undefined;
-  const yParallax = mouseY ? useTransform(mouseY, (v) => v * parallaxStrengthY) : undefined;
+  const fallbackMouseX = useMotionValue(0);
+  const sourceX = mouseX ?? fallbackMouseX;
+  const xParallax = useTransform(sourceX, (v) => v * parallaxStrengthX);
+  const springX = useSpring(xParallax, { stiffness: 200, damping: 28, mass: 0.6 });
 
   return (
     <motion.div
@@ -201,9 +199,7 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
       )}
       style={{
         willChange: "transform",
-        x: xParallax,
-        // Keep float animation on y; only apply y parallax when float disabled
-        y: undefined,
+        x: springX,
         width: responsiveSize ? undefined : fluid ? CLAMP[size] : undefined,
         height: responsiveSize ? undefined : fluid ? CLAMP[size] : undefined,
       }}
