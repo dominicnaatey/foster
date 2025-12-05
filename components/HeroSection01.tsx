@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 
 type CardSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
@@ -63,6 +64,7 @@ type FloatingImageCardProps = {
     xl: CardSize;
     "2xl": CardSize;
   }>;
+  floatSpeed?: "normal" | "slow";
 };
 
 const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
@@ -75,6 +77,7 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
   size = "md",
   fluid = true,
   responsiveSize,
+  floatSpeed = "normal",
 }) => {
   const [bp, setBp] = React.useState<"base" | "sm" | "md" | "lg" | "xl" | "2xl">("base");
   React.useEffect(() => {
@@ -174,8 +177,10 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
     "2xl": "clamp(16rem, 26vw, 18rem)",
   };
 
+  const duration = floatSpeed === "slow" ? 12 : 8;
+
   return (
-    <div
+    <motion.div
       className={cn(
         "relative rounded-2xl overflow-hidden shadow-card transition-all duration-500 hover:shadow-card-hover hover:scale-105",
         sizeClass,
@@ -183,13 +188,15 @@ const FloatingImageCard: React.FC<FloatingImageCardProps> = ({
       )}
       style={{
         transform: `rotate(${rot}deg)`,
-        animationDelay: `${delay}s`,
         width: responsiveSize ? undefined : fluid ? CLAMP[size] : undefined,
         height: responsiveSize ? undefined : fluid ? CLAMP[size] : undefined,
       }}
+      initial={{ y: 0 }}
+      animate={{ y: [0, -12, 0, 12, 0] }}
+      transition={{ duration, repeat: Infinity, ease: "easeInOut", delay }}
     >
       <img src={src} alt={alt} className="w-full h-full object-cover" loading="lazy" />
-    </div>
+    </motion.div>
   );
 };
 
@@ -291,6 +298,7 @@ export default function HeroSection01({
               src={images[1].src}
               alt={images[1].alt}
               rotationByBreakpoint={{ base: -12, md: -45}}
+              floatSpeed="slow"
               delay={0.5}
             />
           </div>
@@ -324,6 +332,7 @@ export default function HeroSection01({
               src={images[4].src}
               alt={images[4].alt}
               rotationByBreakpoint={{ base: 0, md: 14}}
+              floatSpeed="slow"
               delay={0.4}
             />
           </div>
