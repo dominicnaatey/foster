@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useRef } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Button from "@/components/Button";
+import PopupMenu from "@/components/PopupMenu";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -44,7 +45,7 @@ export default function Navbar() {
             aria-controls="mobile-nav"
             onClick={() => (open ? closeMenu() : openMenu())}
           >
-            {open ? <XMarkIcon className="w-6 h-6" /> : <Bars3Icon className="w-6 h-6" />}
+            {open ? <XMarkIcon className="w-8 h-8" /> : <Bars3Icon className="w-8 h-8" />}
           </button>
         </div>
       </nav>
@@ -53,7 +54,7 @@ export default function Navbar() {
           <div
             id="mobile-nav"
             ref={(el) => { panelRef.current = el; }}
-            className={`w-[70vw] h-full bg-white shadow-[8px_0_16px_rgba(0,0,0,0.15)] transition-transform duration-300 ease-out will-change-transform flex flex-col`}
+            className={`w-screen h-full bg-white shadow-[8px_0_16px_rgba(0,0,0,0.15)] transition-transform duration-300 ease-out will-change-transform flex flex-col`}
             style={{ transform: slideIn ? "translateX(0)" : "translateX(-100%)" }}
             onTouchStart={(e) => {
               startXRef.current = e.touches[0].clientX;
@@ -70,27 +71,11 @@ export default function Navbar() {
               startXRef.current = null;
             }}
           >
-            <div className="flex items-center justify-between px-4 py-3 border-b">
-              <span className="font-display text-lg">Menu</span>
-              <button aria-label="Close menu" className="rounded-md p-2 text-gray-700 hover:bg-gray-100" onClick={closeMenu}>
-                <XMarkIcon className="w-6 h-6" />
-              </button>
-            </div>
-            <div className="px-4 py-3 space-y-2">
-              <Link href="/" className="block text-gray-700 hover:text-gray-900" onClick={closeMenu}>Home</Link>
-              <Link href="/about" className="block text-gray-700 hover:text-gray-900" onClick={closeMenu}>About Us</Link>
-              <Link href="/gallery" className="block text-gray-700 hover:text-gray-900" onClick={closeMenu}>Gallery</Link>
-              <Link href="/blog" className="block text-gray-700 hover:text-gray-900" onClick={closeMenu}>Blog</Link>
-              <Link href="/contact" className="block text-gray-700 hover:text-gray-900" onClick={closeMenu}>Contact</Link>
-              <Button href="/contact" variant="black" className="w-full mt-2">Get Involved</Button>
-            </div>
+            <button aria-label="Close menu" className="absolute top-6 right-3 rounded-md p-2 text-gray-700 hover:bg-gray-100" onClick={closeMenu}>
+              <XMarkIcon className="w-8 h-8" />
+            </button>
+            <PopupMenu open={open} onClose={closeMenu} />
           </div>
-          <button
-            className="w-[30vw] h-full bg-black/30 transition-opacity duration-300 ease-out"
-            aria-label="Close menu overlay"
-            aria-hidden="false"
-            onClick={closeMenu}
-          />
         </div>
       )}
     </header>
