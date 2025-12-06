@@ -1,6 +1,10 @@
 "use client";
 
 import React from "react";
+import LG from "../../components/LightGallery";
+import lgThumbnail from "lightgallery/plugins/thumbnail";
+import "lightgallery/css/lightgallery.css";
+import "lightgallery/css/lg-thumbnail.css";
 
 export default function GalleryPage() {
   const [activeTab, setActiveTab] = React.useState<
@@ -46,23 +50,46 @@ export default function GalleryPage() {
           </div>
 
           <div className="columns-2 md:columns-4 gap-4 p-4">
-            {(activeTab === "All" ? IMAGES : IMAGES.filter((it) => it.category === activeTab)).map((item, i) => (
-              <div
-                key={i}
-                className="mb-4 break-inside-avoid rounded-xl overflow-hidden group cursor-pointer relative"
-              >
-                <div
-                  className={`bg-cover bg-center rounded-xl flex flex-col justify-end p-4 ${item.aspect ?? "aspect-auto"} h-auto min-h-[200px]`}
-                  style={{
-                    backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 40%), url("${item.url}")`,
-                  }}
+            <LG
+              selector=".gallery-item"
+              plugins={[lgThumbnail]}
+              thumbnail={true}
+              animateThumb={true}
+              thumbWidth={74}
+              thumbHeight={"32"}
+              appendThumbnailsTo={".lg-outer"}
+              currentPagerPosition={"middle"}
+              alignThumbnails={"middle"}
+              exThumbImage={"data-exthumbimage"}
+              appendSubHtmlTo={".lg-item"}
+              allowMediaOverlap={false}
+              subHtmlSelectorRelative={true}
+            >
+              {(activeTab === "All" ? IMAGES : IMAGES.filter((it) => it.category === activeTab)).map((item, i) => (
+                <a
+                  key={i}
+                  className="gallery-item block mb-4 break-inside-avoid rounded-xl overflow-hidden group cursor-pointer relative"
+                  href={item.url}
+                  data-sub-html={`#caption-${i}`}
+                  data-exthumbimage={item.url}
                 >
-                  <p className="text-white text-base font-bold leading-tight line-clamp-3 transform transition-transform duration-300 group-hover:-translate-y-1">
-                    {item.title}
-                  </p>
-                </div>
-              </div>
-            ))}
+                  <img src={item.url} alt={item.title} className="hidden" />
+                  <div id={`caption-${i}`} className="hidden">
+                    <p className="text-white text-sm">{item.title}</p>
+                  </div>
+                  <div
+                    className={`bg-cover bg-center rounded-xl flex flex-col justify-end p-4 ${item.aspect ?? "aspect-auto"} h-auto min-h-[200px]`}
+                    style={{
+                      backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 40%), url("${item.url}")`,
+                    }}
+                  >
+                    <p className="text-white text-base font-bold leading-tight line-clamp-3 transform transition-transform duration-300 group-hover:-translate-y-1">
+                      {item.title}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </LG>
           </div>
         </div>
       </main>
