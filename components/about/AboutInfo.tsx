@@ -47,7 +47,7 @@ export default function AboutCopy() {
         </div>
       </div>
 
-      <div className="h-full px-4 py-16 md:py-4 sm:px-8 md:px-16 lg:px-24 xl:px-40">
+      <div className="h-full px-4 py-16 md:pb-24 sm:px-8 md:px-16 lg:px-24 xl:px-40">
         <div className="grid h-full max-w-6xl mx-auto grid-cols-1 md:grid-cols-2 gap-16 md:gap-8 items-center justify-between">
           <div className="order-2 md:order-1 flex flex-col gap-4 md:pl-8 items-center md:items-start text-center md:text-left">
             <h1 className="text-3xl md:text-5xl font-black leading-tight">
