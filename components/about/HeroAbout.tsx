@@ -34,7 +34,7 @@ export default function HeroAbout() {
           </p>
         </div>
 
-        <div className={`max-w-6xl mx-auto absolute bottom-0 top-160 left-0 right-0 z-10`}>
+        <div className={`max-w-6xl mx-auto absolute bottom-0 md:top-160 left-0 right-0 z-10`}>
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-end">
             {images.map((img, idx) => (
