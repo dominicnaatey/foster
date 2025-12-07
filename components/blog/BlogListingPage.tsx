@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { MagnifyingGlassIcon, ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { POSTS, POPULAR_POSTS } from "@/lib/data/sampleBlogPosts";
 
 export default function BlogListingPage() {
@@ -10,7 +11,7 @@ export default function BlogListingPage() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-center text-center mb-10">
           <p className="text-primary text-sm font-bold uppercase tracking-wider">Our Blog</p>
-          <p className="text-slate-900 text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em] mt-2">Our Stories</p>
+          <p className="text-slate-900 text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em] mt-2">Stories & Insights</p>
           <p className="text-slate-500 text-base lg:text-lg mt-4 max-w-2xl">Insights, stories, and news from our community, shared to inspire and inform.</p>
         </div>
 
@@ -48,7 +49,7 @@ export default function BlogListingPage() {
 
             <div className="flex items-center justify-center p-4 mt-12">
               <button className="flex size-10 items-center justify-center text-slate-500 hover:text-primary">
-                <span className="material-symbols-outlined">chevron_left</span>
+                <ChevronLeftIcon className="w-6 h-6" aria-hidden="true" />
               </button>
               <button className="size-10 bg-primary text-white rounded-full font-bold">1</button>
               {[2, 3, "...", 8].map((num, i) => (
@@ -57,14 +58,14 @@ export default function BlogListingPage() {
                 </button>
               ))}
               <button className="flex size-10 items-center justify-center text-slate-500 hover:text-primary">
-                <span className="material-symbols-outlined">chevron_right</span>
+                <ChevronRightIcon className="w-6 h-6" aria-hidden="true" />
               </button>
             </div>
           </div>
 
           <aside className="w-full lg:w-1/3 flex flex-col gap-10">
             <div className="relative">
-              <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+              <MagnifyingGlassIcon className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true" />
               <input type="text" placeholder="Search articles..." className="w-full h-12 pl-12 pr-4 rounded-xl border border-slate-300 bg-white text-slate-800 focus:ring-2 focus:ring-primary" />
             </div>
             <div className="flex flex-col gap-4">
