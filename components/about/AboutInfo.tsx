@@ -42,7 +42,7 @@ export default function AboutCopy() {
       </div>
 
       <div className="max-w-6xl mx-auto my-20">
-        <div className="text-3xl md:text-8xl font-bold text-center italic text-black/15">
+        <div className="text-3xl md:text-8xl font-bold text-center italic text-gray-200/75">
           MAKING A DIFFERENCE
         </div>
       </div>
