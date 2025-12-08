@@ -9,6 +9,7 @@ import Testimonials from "@/components/Testimonials";
 import BlogSection from "@/components/BlogSection";
 import CtaSection from "@/components/CtaSection";
 import ServicesSection from "@/components/ServicesSection";
+import ImageGallery from "@/components/ImageGallery";
 
 export default function FosterAgencyPage() {
   return (
@@ -20,7 +21,8 @@ export default function FosterAgencyPage() {
             <HeroSection01 />
             <CareSection />
             <ServicesSection />
-            <ProgramHighlights />
+            {/* <ProgramHighlights /> */}
+            <ImageGallery />
             <Testimonials />
             <BlogSection />
             <CtaSection />
