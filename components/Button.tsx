@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function Button({ children, href, variant = "primary", className }: Props) {
-  const base = "inline-flex items-center justify-center rounded-full h-12 px-6 font-bold transition-colors";
+  const base = "inline-flex items-center justify-center rounded-full h-12 px-6 font-regular transition-colors";
   const styles =
     variant === "outline"
       ? "border border-gray-300 text-gray-800 hover:bg-gray-100"
