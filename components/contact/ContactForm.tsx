@@ -1,3 +1,5 @@
+import Button from "@/components/Button";
+
 export default function ContactForm() {
   return (
     <div className="lg:col-span-2 flex flex-col gap-6">
@@ -17,12 +19,7 @@ export default function ContactForm() {
         </div>
         <div className="flex flex-col sm:col-span-2">
           <label className="text-slate-900 text-base font-medium pb-2" htmlFor="subject">Subject</label>
-          <select id="subject" className="form-select w-full rounded-lg border border-slate-300 bg-white h-12 p-3 focus:ring-2 focus:ring-primary/50">
-            <option>Becoming a Foster Parent</option>
-            <option>Donations</option>
-            <option>Volunteering</option>
-            <option>General Inquiry</option>
-          </select>
+          <input id="subject" placeholder="Enter subject" className="form-input w-full rounded-lg border border-slate-300 bg-white h-12 p-3 focus:ring-2 focus:ring-primary/50" />
         </div>
         <div className="flex flex-col sm:col-span-2">
           <label className="text-slate-900 text-base font-medium pb-2" htmlFor="message">Message</label>
@@ -30,10 +27,10 @@ export default function ContactForm() {
         </div>
         <div className="flex items-center gap-3 sm:col-span-2">
           <input id="consent" type="checkbox" className="form-checkbox h-5 w-5 text-primary border-slate-300" />
-          <label htmlFor="consent" className="text-slate-700 text-sm">I agree to be contacted by the Foster Agency.</label>
+          <label htmlFor="consent" className="text-slate-700 text-sm">I agree to be contacted</label>
         </div>
         <div className="sm:col-span-2">
-          <button className="w-full sm:w-auto h-12 px-6 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-colors">Send Message</button>
+          <Button href="#cta" variant="black">Send Message</Button>
         </div>
       </form>
     </div>
