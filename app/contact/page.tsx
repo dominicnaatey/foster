@@ -133,6 +133,29 @@ export default function ContactPage() {
                   <p>info@fosteragency.org</p>
                 </div>
               </div>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-slate-900 dark:text-white text-xl font-bold">Contact Us</h3>
+                <div className="flex items-center gap-4 text-slate-700 dark:text-slate-300">
+                  <span className="material-symbols-outlined text-primary">apartment</span>
+                  <p>A New Direction for Youth</p>
+                </div>
+                <div className="flex items-center gap-4 text-slate-700 dark:text-slate-300">
+                  <span className="material-symbols-outlined text-primary">call</span>
+                  <p>952-657-4300</p>
+                </div>
+                <div className="flex items-center gap-4 text-slate-700 dark:text-slate-300">
+                  <span className="material-symbols-outlined text-primary">mail</span>
+                  <p>Info@anewdirectionforyouth.org</p>
+                </div>
+              </div>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-slate-900 dark:text-white text-xl font-bold">Hours</h3>
+                <ul className="space-y-2 text-slate-700 dark:text-slate-300">
+                  <li className="flex justify-between"><span>Monday - Thursday</span> <span>8:00 AM - 4:00 PM CST</span></li>
+                  <li className="flex justify-between"><span>Friday</span> <span>8:00 AM – 12:00 PM CST</span></li>
+                  <li className="flex justify-between"><span>Saturday - Sunday</span> <span className="text-slate-500">Closed</span></li>
+                </ul>
+              </div>
               <div className="bg-primary/10 dark:bg-primary/20 p-6 rounded-lg flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <span className="material-symbols-outlined text-primary">emergency</span>
