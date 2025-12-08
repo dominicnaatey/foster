@@ -1,13 +1,13 @@
 export default function ServicesSection() {
   return (
-    <section className="bg-[#F8F2E9] font-display">
-      <div className="mx-auto max-w-6xl px-6 py-14">
+    <section className="bg-linear-to-b from-[#F8F2E9] to-white font-display">
+      <div className="mx-auto max-w-6xl px-6 py-20">
         <div className="text-sm font-semibold tracking-widest text-black/70 font-display">
           OUR SERVICES
         </div>
-        <div className="mt-4 grid grid-cols-1 md:flex gap-6 md:gap-8">
+        <div className="mt-4 grid grid-cols-1 md:flex gap-12 md:gap-12">
           <div className="md:w-[38%]">
-            <h3 className="font-display text-3xl md:text-4xl font-black text-black">
+            <h3 className="font-display text-3xl md:text-4xl text-black font-bold">
               CRISIS RESPITE
             </h3>
             <p className="mt-3 text-black/80 leading-relaxed">
@@ -18,10 +18,10 @@ export default function ServicesSection() {
           </div>
 
           <div className="md:w-[72%]">
-            <h3 className="font-display text-3xl md:text-4xl font-black text-black">
+            <h3 className="font-display text-3xl md:text-4xl text-black font-bold">
               FOSTER CARE
             </h3>
-            <p className="mt-3 text-black/80 leading-relaxed">
+            <p className="mt-3 text-black/80 leading-relaxed text">
               Individual waiver services that provide ongoing residential care
               and supportive services in a home licensed as family foster care
               or corporate foster care. Child foster care services are provided
