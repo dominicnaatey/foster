@@ -4,7 +4,7 @@ export default function CtaSection() {
       <h2 className="text-3xl font-bold">Ready to Make a Lifelong Impact?</h2>
       <p className="mt-4 text-gray-700">Whether you can offer a home or support our mission, your help is invaluable.</p>
       <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <button className="rounded-xl h-12 px-6 bg-primary text-white font-bold hover:opacity-90">Become a Foster Parent</button>
+        <button className="rounded-xl h-12 px-6 bg-primary text-white font-bold hover:opacity-90">Get Involved</button>
         <button className="rounded-xl h-12 px-6 bg-peach text-gray-800 font-bold hover:opacity-90">Donate Now</button>
       </div>
     </section>
