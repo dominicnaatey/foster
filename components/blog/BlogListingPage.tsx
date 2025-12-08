@@ -35,7 +35,7 @@ export default function BlogListingPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {POSTS.map((post, i) => (
                 <div className="flex flex-col gap-3 group" key={i}>
-                  <div className="w-full bg-center bg-cover bg-no-repeat aspect-4/3 rounded-xl overflow-hidden" style={{ backgroundImage: `url(${post.image})` }} />
+                  <div className="w-full bg-center bg-cover bg-no-repeat aspect-5/3 rounded-xl overflow-hidden" style={{ backgroundImage: `url(${post.image})` }} />
                   <div className="flex flex-col gap-2 p-2">
                     <p className="text-slate-500 text-sm">
                       {post.category} • {post.date}
