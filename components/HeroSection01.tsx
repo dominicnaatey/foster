@@ -291,7 +291,7 @@ export default function HeroSection01({
 
   return (
     <section
-      className={cx("relative w-full h-screen bg-gray-100 overflow-hidden", className)}
+      className={cx("relative w-full h-screen bg-gray-50 overflow-hidden", className)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
@@ -325,10 +325,10 @@ export default function HeroSection01({
             }}
           >
             <motion.div variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}>
-              <Button variant="hero" size="xl" href={learnMoreHref}>Learn More</Button>
+              <Button variant="hero" size="xl" href="/about"	>Learn More</Button>
             </motion.div>
             <motion.div variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}>
-              <Button variant="hero-outline" size="xl" href={getInvolvedHref}>Get Involved</Button>
+              <Button variant="hero-outline" size="xl" href="/contact">Get Involved</Button>
             </motion.div>
           </motion.div>
         </motion.div>
