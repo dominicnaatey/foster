@@ -4,7 +4,7 @@ import { MapPinIcon, PhoneIcon, EnvelopeIcon, BuildingOfficeIcon, ExclamationTri
 export default function ContactSidebar() {
   return (
     <div className="lg:col-span-1 flex flex-col gap-8">
-      <div className="flex flex-col gap-4">
+      {/* <div className="flex flex-col gap-4">
         <h3 className="text-slate-900 text-xl font-bold">Our Location</h3>
         <div className="relative aspect-video w-full overflow-hidden rounded-lg">
           <Image
@@ -30,19 +30,19 @@ export default function ContactSidebar() {
           <EnvelopeIcon className="w-5 h-5 text-primary" aria-hidden="true" />
           <p>info@fosteragency.org</p>
         </div>
-      </div>
+      </div> */}
       <div className="flex flex-col gap-4">
         <h3 className="text-slate-900 text-xl font-bold">Contact Us</h3>
         <div className="flex items-center gap-4 text-slate-700">
-          <BuildingOfficeIcon className="w-5 h-5 text-primary" aria-hidden="true" />
+          <BuildingOfficeIcon className="w-5 h-5 text-black" aria-hidden="true" />
           <p>A New Direction for Youth</p>
         </div>
         <div className="flex items-center gap-4 text-slate-700">
-          <PhoneIcon className="w-5 h-5 text-primary" aria-hidden="true" />
+          <PhoneIcon className="w-5 h-5 text-black" aria-hidden="true" />
           <p>952-657-4300</p>
         </div>
         <div className="flex items-center gap-4 text-slate-700">
-          <EnvelopeIcon className="w-5 h-5 text-primary" aria-hidden="true" />
+          <EnvelopeIcon className="w-5 h-5 text-black" aria-hidden="true" />
           <p>Info@anewdirectionforyouth.org</p>
         </div>
       </div>
@@ -54,7 +54,7 @@ export default function ContactSidebar() {
           <li className="flex justify-between"><span>Saturday - Sunday</span> <span className="text-slate-500">Closed</span></li>
         </ul>
       </div>
-      <div className="bg-primary/10 p-6 rounded-lg flex flex-col gap-3">
+      {/* <div className="bg-primary/10 p-6 rounded-lg flex flex-col gap-3">
         <div className="flex items-center gap-3">
           <ExclamationTriangleIcon className="w-5 h-5 text-primary" aria-hidden="true" />
           <h4 className="text-primary text-lg font-bold">In an Emergency?</h4>
@@ -63,7 +63,7 @@ export default function ContactSidebar() {
           If you are a foster parent and have an urgent situation outside of business hours,
           please call our 24/7 emergency line at (123) 555-0199.
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }
