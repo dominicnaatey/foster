@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { MagnifyingGlassIcon, ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { POSTS, POPULAR_POSTS } from "@/lib/data/sampleBlogPosts";
 
@@ -34,8 +35,8 @@ export default function BlogListingPage() {
           <div className="w-full lg:w-2/3">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {POSTS.map((post, i) => (
-                <div className="flex flex-col gap-3 group" key={i}>
-                  <div className="w-full bg-center bg-cover bg-no-repeat aspect-5/3 rounded-xl overflow-hidden" style={{ backgroundImage: `url(${post.image})` }} />
+                <Link href={`/blog/${post.slug}`} className="flex flex-col gap-3 group" key={i}>
+                  <div className="w-full bg-center bg-cover bg-no-repeat aspect-[4/3] rounded-xl overflow-hidden" style={{ backgroundImage: `url(${post.image})` }} />
                   <div className="flex flex-col gap-2 p-2">
                     <p className="text-slate-500 text-sm">
                       {post.category} • {post.date}
@@ -43,7 +44,7 @@ export default function BlogListingPage() {
                     <p className="text-slate-900 text-lg font-bold group-hover:text-primary transition-colors">{post.title}</p>
                     <p className="text-slate-600 text-sm">{post.description}</p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
 
