@@ -315,7 +315,7 @@ export default function HeroSection01({
             className="text-slate-700 text-base sm:text-lg"
             variants={{ hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0 } }}
           >
-            Providing Therapeutic Enrichment And Stable <br/> Community-Based Care For Boys Ages 9–21,
+            Providing Therapeutic Enrichment And Stable <br/> Community-Based Care For Boys And Girls, Ages 9–21,
           </motion.p>
           <motion.div
             className="mt-8 flex items-center justify-center gap-4"
