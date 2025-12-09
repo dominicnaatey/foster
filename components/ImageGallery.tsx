@@ -21,7 +21,7 @@ const images = [
 
 export default function ImageGallery() {
   return (
-    <section w-full className="bg-white flex flex-col items-center pt-20 pb-24">
+    <section className="w-full bg-white flex flex-col items-center pt-20 pb-24">
       <div className="flex items-center justify-center gap-16 mb-8">
         <button aria-label="Previous" className="text-gray-500 hover:text-gray-800 transition-colors">
           <ChevronLeftIcon className="w-8 h-8" />
