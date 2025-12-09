@@ -23,7 +23,7 @@ export default function FosterAgencyPage() {
             <ServicesSection />
             {/* <ProgramHighlights /> */}
             <ImageGallery />
-            <Testimonials />
+            {/* <Testimonials /> */}
             <BlogSection />
             <CtaSection />
           </main>
