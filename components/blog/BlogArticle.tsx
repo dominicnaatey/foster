@@ -58,11 +58,11 @@ export default function BlogArticle() {
           <div className="bg-gray-50 sticky top-24 z-10 my-10 flex flex-col items-center gap-4 py-6 border-y border-slate-200">
             <h3 className="text-sm font-bold uppercase tracking-wider text-slate-600">Share this story</h3>
             <div className="flex items-center gap-4">
-              <span className="size-10 flex items-center justify-center rounded-full bg-slate-200 text-slate-600 hover:bg-primary hover:text-white transition-colors" aria-label="Copy link">
-                <LinkIcon className="w-5 h-5" />
+              <span className="size-10 flex items-center justify-center rounded-full bg-slate-200 text-slate-600 hover:bg-black hover:text-white transition-colors" aria-label="Copy link">
+                <LinkIcon className="w-5 h-5 hover:scale-110 transition-transform" />
               </span>
-              <span className="size-10 flex items-center justify-center rounded-full bg-slate-200 text-slate-600 hover:bg-primary hover:text-white transition-colors" aria-label="Email">
-                <EnvelopeIcon className="w-5 h-5" />
+              <span className="size-10 flex items-center justify-center rounded-full bg-slate-200 text-slate-600 hover:bg-black hover:text-white transition-colors" aria-label="Email">
+                <EnvelopeIcon className="w-5 h-5 hover:scale-110 transition-transform" />
               </span>
             </div>
           </div>
