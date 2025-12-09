@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Button from "@/components/Button";
 import PopupMenu from "@/components/PopupMenu";
@@ -11,6 +12,7 @@ export default function Navbar() {
   const [slideIn, setSlideIn] = useState(false);
   const startXRef = useRef<number | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
+  const pathname = usePathname();
 
   const openMenu = () => {
     setOpen(true);
@@ -24,19 +26,19 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-white shadow-sm">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.png" alt="FosterCare" width={45} height={45} priority />
-          <span className="font-display text-xl font-bold">FosterCare</span>
+          <Image src="/logo.png" alt="FosterCare" width={40} height={40} priority />
+          <span className="font-display text-xs font-medium italic">A New Direction <br />For The Youth</span>
         </Link>
-        <div className="hidden md:flex items-center gap-6">
-          <Link href="/" className="text-gray-700 hover:text-gray-900">Home</Link>
-          <Link href="/about" className="text-gray-700 hover:text-gray-900">About Us</Link>
-          <Link href="/gallery" className="text-gray-700 hover:text-gray-900">Gallery</Link>
-          <Link href="/blog" className="text-gray-700 hover:text-gray-900">Blog</Link>
-          <Link href="/contact" className="text-gray-700 hover:text-gray-900">Contact</Link>
+        <div className="hidden md:flex items-center gap-6 text-sm">
+          <Link href="/" className={pathname === "/" ? "text-black" : "text-gray-700 hover:text-gray-900"}>Home</Link>
+          <Link href="/about" className={pathname.startsWith("/about") ? "text-black" : "text-gray-700 hover:text-gray-900"}>About Us</Link>
+          <Link href="/gallery" className={pathname.startsWith("/gallery") ? "text-black" : "text-gray-700 hover:text-gray-900"}>Gallery</Link>
+          <Link href="/blog" className={pathname.startsWith("/blog") ? "text-black" : "text-gray-700 hover:text-gray-900"}>Blog</Link>
+          <Link href="/contact" className={pathname.startsWith("/contact") ? "text-black" : "text-gray-700 hover:text-gray-900"}>Contact</Link>
         </div>
         <div className="flex items-center gap-3">
           <div className="hidden md:block">
-            <Button href="/contact" variant="black">Get Involved</Button>
+            <Link href="/contact" className="px-6 py-3 text-sm bg-black text-white rounded-full hover:bg-gray-800">Get Involved</Link>
           </div>
           <button
             aria-label="Toggle menu"
