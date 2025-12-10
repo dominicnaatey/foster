@@ -10,6 +10,7 @@ import BlogSection from "@/components/BlogSection";
 import CtaSection from "@/components/CtaSection";
 import ServicesSection from "@/components/ServicesSection";
 import ImageGallery from "@/components/ImageGallery";
+import Carousel from "@/components/Carousel";
 
 export default function FosterAgencyPage() {
   return (
@@ -22,7 +23,8 @@ export default function FosterAgencyPage() {
             <CareSection />
             <ServicesSection />
             {/* <ProgramHighlights /> */}
-            <ImageGallery />
+            {/* <ImageGallery /> */}
+            <Carousel />
             {/* <Testimonials /> */}
             <BlogSection />
             <CtaSection />

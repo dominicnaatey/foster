@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
@@ -20,55 +20,61 @@ const images = [
 ];
 
 export default function ImageGallery() {
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const centerCardRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const scroller = scrollerRef.current;
+    const center = centerCardRef.current;
+    if (scroller && center) {
+      center.scrollIntoView({ behavior: "auto", inline: "center", block: "nearest" });
+    }
+  }, []);
+
+  const extended = [images[0], ...images, images[2]];
+
+  const scrollBy = (dx: number) => {
+    scrollerRef.current?.scrollBy({ left: dx, behavior: "smooth" });
+  };
+
   return (
     <section className="w-full bg-white flex flex-col items-center pt-20 pb-24">
       <div className="flex items-center justify-center gap-16 mb-8">
-        <button aria-label="Previous" className="text-gray-500 hover:text-gray-800 transition-colors">
+        <button aria-label="Previous" className="text-gray-500 hover:text-gray-800 transition-colors" onClick={() => scrollBy(-420)}>
           <ChevronLeftIcon className="w-8 h-8" />
         </button>
-        <button aria-label="Next" className="text-gray-500 hover:text-gray-800 transition-colors">
+        <button aria-label="Next" className="text-gray-500 hover:text-gray-800 transition-colors" onClick={() => scrollBy(420)}>
           <ChevronRightIcon className="w-8 h-8" />
         </button>
       </div>
 
-      <div className="flex items-center justify-center gap-6 px-16 overflow-visible">
-        <div className="relative w-[380px] rounded-[40px] overflow-hidden shrink-0 shadow-sm">
-          <Image
-            src={images[0].src}
-            alt={images[0].label}
-            width={600}
-            height={800}
-            className="rounded-[40px] object-cover aspect-[4/4.3]"
-          />
-          <span className="absolute bottom-4 left-4 bg-black/60 text-white text-xs px-3 py-1.5 rounded-full">
-            {images[0].label}
-          </span>
-        </div>
-
-        <div className="relative w-[620px] rounded-[45px] overflow-hidden shrink-0 shadow-lg scale-[1.03]">
-          <Image
-            src={images[1].src}
-            alt={images[1].label}
-            width={900}
-            height={600}
-            className="rounded-[45px] object-cover aspect-4/3"
-          />
-          <span className="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-3 py-1.5 rounded-full">
-            {images[1].label}
-          </span>
-        </div>
-
-        <div className="relative w-[380px] rounded-[40px] overflow-hidden shrink-0 shadow-sm">
-          <Image
-            src={images[2].src}
-            alt={images[2].label}
-            width={600}
-            height={800}
-            className="rounded-[40px] object-cover aspect-[4/4.3]"
-          />
-          <span className="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-3 py-1.5 rounded-full">
-            {images[2].label}
-          </span>
+      <div className="relative w-full overflow-hidden">
+        <div
+          ref={scrollerRef}
+          className="flex items-center gap-6 px-12 sm:px-16 lg:px-24 overflow-hidden snap-x snap-mandatory"
+          onWheel={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          }}
+          onTouchMove={(e) => {
+            e.preventDefault();
+          }}
+          style={{ overscrollBehavior: "none" }}
+        >
+          {extended.map((img, idx) => {
+            const isCenter = idx === 2; // center image in extended array
+            const cardCls = isCenter
+              ? "relative w-[720px] rounded-[45px] overflow-hidden shrink-0 shadow-lg snap-center"
+              : "relative w-[350px] rounded-[40px] overflow-hidden shrink-0 shadow-sm  snap-start";
+            const aspectCls = isCenter ? "rounded-[45px] object-cover aspect-4/3" : "rounded-[40px] object-cover aspect-[4/4.3]";
+            const captionPos = "absolute bottom-4 left-1/2 -translate-x-1/2";
+            return (
+              <div className={cardCls} key={idx} ref={isCenter ? centerCardRef : undefined} aria-hidden={idx === 0 || idx === extended.length - 1}>
+                <Image src={img.src} alt={img.label} width={isCenter ? 900 : 600} height={isCenter ? 600 : 800} className={aspectCls} />
+                <span className={`${captionPos} bg-black/60 text-white text-xs px-3 py-1.5 rounded-full`}>{img.label}</span>
+              </div>
+            );
+          })}
         </div>
       </div>
 
