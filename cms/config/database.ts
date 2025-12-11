@@ -1,5 +1,5 @@
 import path from 'path';
-import { neonConfig } from 'pg';
+import { neonConfig } from '@neondatabase/serverless';
 import ws from 'ws';
 
 neonConfig.webSocketConstructor = ws;
