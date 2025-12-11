@@ -1,4 +1,5 @@
 import path from 'path';
+// @ts-ignore
 import { neonConfig } from '@neondatabase/serverless';
 import ws from 'ws';
 
