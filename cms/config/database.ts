@@ -1,6 +1,7 @@
 import path from 'path';
 // @ts-ignore
 import { neonConfig } from '@neondatabase/serverless';
+// @ts-ignore
 import ws from 'ws';
 
 neonConfig.webSocketConstructor = ws;
