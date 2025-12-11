@@ -1,4 +1,5 @@
 const adminConfig = ({ env }: { env: Strapi.Env }) => ({
+  url: '/admin',
   auth: {
     secret: env('ADMIN_JWT_SECRET'),
   },
