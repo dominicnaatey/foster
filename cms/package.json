@@ -15,14 +15,18 @@
     "upgrade:dry": "npx @strapi/upgrade latest --dry"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.0.2",
     "@strapi/plugin-cloud": "5.31.3",
     "@strapi/plugin-users-permissions": "5.31.3",
     "@strapi/strapi": "5.31.3",
     "better-sqlite3": "12.4.1",
+    "knex": "^3.1.0",
+    "pg": "npm:@neondatabase/serverless@^1.0.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
-    "styled-components": "^6.0.0"
+    "styled-components": "^6.0.0",
+    "ws": "^8.18.3"
   },
   "devDependencies": {
     "@types/node": "^20",
