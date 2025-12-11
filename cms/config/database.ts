@@ -4,7 +4,7 @@ import ws from 'ws';
 
 neonConfig.webSocketConstructor = ws;
 
-const databaseConfig = ({ env }) => {
+const databaseConfig = ({ env }: { env: Strapi.Env }) => {
   const client = env('DATABASE_CLIENT', 'sqlite');
 
   const connections = {
