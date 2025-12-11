@@ -121,7 +121,7 @@ export default function Carousel({ items, autoPlay = false, intervalMs = 6000 }:
   // normalization handled in event handlers
 
   return (
-    <section className="w-full bg-white py-12">
+    <section className="w-full bg-white py-4">
       <div className="mx-auto px-0">
         <div className="hidden sm:flex items-center justify-between mb-6 ">
           <button aria-label="Previous" onClick={prev} className="rounded-full p-2 text-slate-600 hover:bg-slate-100">
@@ -132,7 +132,7 @@ export default function Carousel({ items, autoPlay = false, intervalMs = 6000 }:
           </button>
         </div>
 
-        <div ref={containerRef} className="relative overflow-hidden">
+        <div ref={containerRef} className="relative overflow-hidden py-8">
           <motion.div
             className="flex items-stretch"
             drag="x"
