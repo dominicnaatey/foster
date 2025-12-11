@@ -15,3 +15,12 @@ declare global {
     }
   }
 }
+
+declare module '@neondatabase/serverless' {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  export const neonConfig: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  export const Pool: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  export const Client: any;
+}
