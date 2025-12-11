@@ -1,6 +1,8 @@
 import path from 'path';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { neonConfig } from '@neondatabase/serverless';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import ws from 'ws';
 
