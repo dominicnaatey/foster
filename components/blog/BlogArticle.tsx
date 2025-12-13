@@ -3,73 +3,115 @@
 import React from "react";
 import Image from "next/image";
 import { LinkIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
+import { BlogPost, BlockNode, ChildNode, ListItemNode } from "@/lib/api";
 
-export default function BlogArticle() {
+const BlockRenderer = ({ block }: { block: BlockNode }) => {
+  switch (block.type) {
+    case 'paragraph':
+      return (
+        <p>
+          {(block.children as ChildNode[]).map((child, i) => {
+            if (child.bold) return <strong key={i}>{child.text}</strong>;
+            if (child.italic) return <em key={i}>{child.text}</em>;
+            if (child.underline) return <u key={i}>{child.text}</u>;
+            return <span key={i}>{child.text}</span>;
+          })}
+        </p>
+      );
+    case 'heading':
+      const HeadingTag = `h${block.level}` as keyof React.JSX.IntrinsicElements;
+      return (
+        <HeadingTag className={`font-display font-bold text-slate-900 ${block.level === 1 ? 'text-3xl md:text-5xl' : 'text-2xl md:text-3xl'} pt-4`}>
+          {(block.children as ChildNode[]).map((child) => child.text).join('')}
+        </HeadingTag>
+      );
+    case 'list':
+      const ListTag = block.format === 'ordered' ? 'ol' : 'ul';
+      return (
+        <ListTag className={`list-inside ${block.format === 'ordered' ? 'list-decimal' : 'list-disc'} space-y-2`}>
+          {(block.children as ListItemNode[]).map((item, i) => (
+            <li key={i}>
+              {item.children.map((child: ChildNode) => child.text).join('')}
+            </li>
+          ))}
+        </ListTag>
+      );
+    case 'quote':
+      return (
+        <blockquote className="border-l-4 border-accent bg-amber-50 p-6 rounded-r-lg my-8">
+          <p className="text-xl italic font-medium text-slate-800">
+            {(block.children as ChildNode[]).map((child) => child.text).join('')}
+          </p>
+        </blockquote>
+      );
+    case 'image':
+      if (!block.image) return null;
+      return (
+        <figure className="my-8">
+          <Image
+            src={block.image.url}
+            alt={block.image.alternativeText || ''}
+            width={block.image.width || 800}
+            height={block.image.height || 600}
+            className="rounded-xl shadow-md object-cover w-full"
+          />
+          {block.image.caption && <figcaption className="text-center text-sm text-slate-500 mt-2">{block.image.caption}</figcaption>}
+        </figure>
+      );
+    default:
+      return null;
+  }
+};
+
+interface BlogArticleProps {
+  post: BlogPost;
+}
+
+export default function BlogArticle({ post }: BlogArticleProps) {
+  if (!post) return null;
+
   return (
     <main className="font-display bg-gray-50 text-slate-800 min-h-screen py-5 sm:py-8 lg:py-12">
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col">
         <div
           className="w-full bg-center bg-cover bg-no-repeat rounded-xl shadow-lg min-h-[320px] md:min-h-[480px]"
           style={{
-            backgroundImage:
-              'url("https://lh3.googleusercontent.com/aida-public/AB6AXuDnUyMxnrz03S9O_4lDd7GIu-xu2b5tfMTw4yf-tDpAF-_SfeymfJUfuuB1fiUFv9UNM-z93jHC94pGjvonDM0L_M0hHh_lskUnXhjb_Ye-t_FdKsFkBq7Ujo4Y_wNCx2i6kUQkk8zrZmmBAu9N87eMcShuyK7ZVsf84LWz6hiagb7ahSEaqdRxTatDd4fUkvEoetNBgft0kBdtmOq83ruFIyTn8UTw2m2siwdy6yYSQOl5XIdndWanBoMdMn_Up1eaOAVol1_Rsw")',
+            backgroundImage: `url("${post.featured_image?.url || '/hero-bg.jpg'}")`,
           }}
         />
 
         <h1 className="text-slate-900 text-3xl md:text-5xl font-bold leading-tight tracking-tight pt-8 pb-4">
-          Five Things We&apos;ve Learned from Our Foster Families This Year
+          {post.title}
         </h1>
 
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-slate-200 pb-6 mb-6">
           <div className="flex items-center gap-3">
             <div
-              className="h-12 w-12 rounded-full bg-cover bg-center"
-              style={{
-                backgroundImage:
-                  'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCXYfOmt0cRporoSLRF3507rPOCjl8sV3-Na7mULMo4fSHAmazAj3IhXSOpxfkhpvkvZ9oxSjDoJ3a_d_cRL7aHduxepYtPzWRRNbcwDIgtfjpB8OkKHqFw4znEGZWP8ZaDesceDulgkx-3JV6zvvfuW5lque6pFGkiFqhnSgUgIYY7-6DVXvWlg3VwQFs7Xk1tRQ5yaWSnU1ExObcHjTRB8dH5uzIy2NKSVbK7uzmm32SzTs5aGz35ZUCGvx5IXky4TJkCA4f3Mw")',
-              }}
+              className="h-12 w-12 rounded-full bg-cover bg-center bg-gray-200"
             />
-            <p className="text-base font-medium text-slate-800">By Jane Doe, Community Director</p>
+            <p className="text-base font-medium text-slate-800">By Foster Team</p>
           </div>
-          <p className="text-sm text-slate-500 shrink-0">October 26, 2023 • 7 min read</p>
+          <p className="text-sm text-slate-500 shrink-0">
+            {new Date(post.publishedAt).toLocaleDateString()}
+          </p>
         </div>
 
         <div className="font-body text-lg text-slate-700 leading-relaxed space-y-6">
-          <p>Starting a journey into foster care is a profound step, filled with moments of immense joy, learning, and growth...</p>
-          <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-900 pt-4">1. The Power of a Simple &quot;Yes&quot;</h2>
-          <p>Every journey begins with a single step...</p>
-          <blockquote className="border-l-4 border-accent bg-amber-50 p-6 rounded-r-lg my-8">
-            <p className="text-xl italic font-medium text-slate-800">&quot;Fostering is about providing a safe harbor, not just a house...&quot;</p>
-          </blockquote>
-          <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-900 pt-4">2. Community is Everything</h2>
-          <p>No one fosters alone...</p>
-          <figure className="my-8">
-            <Image
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAClMQ6XFNvBo39ymAFahE3oiWJDZk-dTewVQ3xxeWGDHth3Cz4cC8G7K322HcqTZpbg_Tkq2hJL-GVPsnhKOkv0DMSKGQHcTBOzWf303eJkHYtdJoEBU7DZp_ZDHJl04S-ErmMqpFplrpuYVoOaV1IA0TlaBu24mAMUYtlVT_zdTqPJKBSj0yErLZLJ8RQXypd_YBQXdx9jpL8_LdYISDRDqUYEeMJ8uf81CkkazZvap9TT8Z8NpYzr-B9sdUUSosU0O5R5-S0mg"
-              alt="Community picnic"
-              width={1200}
-              height={700}
-              className="rounded-xl shadow-md object-cover w-full"
-            />
-            <figcaption className="text-center text-sm text-slate-500 mt-2">Our annual community picnic brings families together.</figcaption>
-          </figure>
-          <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-900 pt-4">3. Resilience is a Learned Skill</h2>
-          <p>Both children and parents demonstrate incredible resilience...</p>
-          <div className="bg-gray-50 sticky top-24 z-10 my-10 flex flex-col items-center gap-4 py-6 border-y border-slate-200">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-slate-600">Share this story</h3>
-            <div className="flex items-center gap-4">
-              <span className="size-10 flex items-center justify-center rounded-full bg-slate-200 text-slate-600 hover:bg-black hover:text-white transition-colors" aria-label="Copy link">
-                <LinkIcon className="w-5 h-5 hover:scale-110 transition-transform" />
-              </span>
-              <span className="size-10 flex items-center justify-center rounded-full bg-slate-200 text-slate-600 hover:bg-black hover:text-white transition-colors" aria-label="Email">
-                <EnvelopeIcon className="w-5 h-5 hover:scale-110 transition-transform" />
-              </span>
-            </div>
+          {post.content && post.content.map((block: BlockNode, index: number) => (
+            <BlockRenderer key={index} block={block} />
+          ))}
+        </div>
+
+        <div className="bg-gray-50 sticky top-24 z-10 my-10 flex flex-col items-center gap-4 py-6 border-y border-slate-200">
+          <h3 className="text-sm font-bold uppercase tracking-wider text-slate-600">Share this story</h3>
+          <div className="flex items-center gap-4">
+            <span className="size-10 flex items-center justify-center rounded-full bg-slate-200 text-slate-600 hover:bg-black hover:text-white transition-colors" aria-label="Copy link">
+              <LinkIcon className="w-5 h-5 hover:scale-110 transition-transform" />
+            </span>
+            <span className="size-10 flex items-center justify-center rounded-full bg-slate-200 text-slate-600 hover:bg-black hover:text-white transition-colors" aria-label="Email">
+              <EnvelopeIcon className="w-5 h-5 hover:scale-110 transition-transform" />
+            </span>
           </div>
-          <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-900">4. Small Moments Have the Biggest Impact</h2>
-          <p>It&apos;s rarely the grand gestures...</p>
-          <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-900">5. Love is an Action</h2>
-          <p>Finally, and most importantly, our foster families have shown us that love is not just a feeling...</p>
         </div>
 
         <div className="mt-16 pt-12 border-t border-slate-200">
@@ -98,8 +140,6 @@ export default function BlogArticle() {
                   }}
                 />
               </div>
-              <h3 className="text-lg font-bold text-slate-800 group-hover:text-primary transition-colors">How Your Donations Make a Difference</h3>
-              <p className="text-sm text-slate-500">See the tangible impact of your generosity...</p>
             </a>
           </div>
         </div>

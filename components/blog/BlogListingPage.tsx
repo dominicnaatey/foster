@@ -4,9 +4,14 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MagnifyingGlassIcon, ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { POSTS, POPULAR_POSTS } from "@/lib/data/sampleBlogPosts";
+import { POPULAR_POSTS } from "@/lib/data/sampleBlogPosts";
+import { BlogPost } from "@/lib/api";
 
-export default function BlogListingPage() {
+interface BlogListingPageProps {
+  posts: BlogPost[];
+}
+
+export default function BlogListingPage({ posts = [] }: BlogListingPageProps) {
   return (
     <section className="font-display bg-gray-50 px-4 md:px-10 lg:px-20 py-10 lg:py-16 min-h-screen">
       <div className="max-w-7xl mx-auto">
@@ -34,15 +39,17 @@ export default function BlogListingPage() {
         <div className="flex flex-col lg:flex-row gap-12">
           <div className="w-full lg:w-2/3">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              {POSTS.map((post, i) => (
-                <Link href={`/blog/${post.slug}`} className="flex flex-col gap-3 group" key={i}>
-                  <div className="w-full bg-center bg-cover bg-no-repeat aspect-[4/3] rounded-xl overflow-hidden" style={{ backgroundImage: `url(${post.image})` }} />
+              {posts.map((post) => (
+                <Link href={`/blog/${post.slug}`} className="flex flex-col gap-3 group" key={post.id}>
+                  <div className="w-full bg-center bg-cover bg-no-repeat aspect-4/3 rounded-xl overflow-hidden" 
+                    style={{ backgroundImage: `url(${post.featured_image?.url || '/hero-bg.jpg'})` }} 
+                  />
                   <div className="flex flex-col gap-2 p-2">
                     <p className="text-slate-500 text-sm">
-                      {post.category} • {post.date}
+                      {post.category || 'Uncategorized'} • {new Date(post.publishedAt).toLocaleDateString()}
                     </p>
                     <p className="text-slate-900 text-lg font-bold group-hover:text-primary transition-colors">{post.title}</p>
-                    <p className="text-slate-600 text-sm">{post.description}</p>
+                    <p className="text-slate-600 text-sm line-clamp-3">{post.description || ''}</p>
                   </div>
                 </Link>
               ))}
@@ -53,11 +60,7 @@ export default function BlogListingPage() {
                 <ChevronLeftIcon className="w-6 h-6" aria-hidden="true" />
               </button>
               <button className="size-10 bg-primary text-white rounded-full font-bold">1</button>
-              {[2, 3, "...", 8].map((num, i) => (
-                <button key={i} className="size-10 flex items-center justify-center rounded-full text-slate-600 hover:bg-slate-200">
-                  {num}
-                </button>
-              ))}
+              {/* Pagination logic would go here */}
               <button className="flex size-10 items-center justify-center text-slate-500 hover:text-primary">
                 <ChevronRightIcon className="w-6 h-6" aria-hidden="true" />
               </button>
