@@ -20,36 +20,52 @@ type Props = {
 
 const DEFAULT_ITEMS: Item[] = [
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAxp21q0SKCygjh4fWwGKeL8fjlPEd56jPonxUDYopupBMq5Ieug1zWDj4Qq5xOsH0C7yLfnvB7qysdTV-xrLYJLM3iDiAxBJYHxcB2H5DIqZRNE5R72KAdPcKSHMb7WrTNvD1QHjY5HINRmAAkwW2TSOT6agV-HXDKK0crtmw7aVcqlpHa1Zbimf84jIq4vHBc1odCZOh7Buyw_XSnx3GaW-ZH2sT3N_Qc_uaVKF2zntMoAxEW7-rAvqPKWL1CmNBRBhK7tisv7Ipv",
-    label: "Emotive Ear Ring",
+    src: "/images/carousel/1.jpg",
+    label: "Image 1",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDjR_JU5qsDlHdO4M-mFrIlT2cGZ3qfjyuHtEGiZzV4ZTsnqico__RFN9mkbiEjVpdW1LlYMCKsmtVtnLTdhDsWt7hTO_raNwjj4q0fS0rKqcXYt3DL_LJkl_DST4grIcYwPlKO-8-lCxNAjy_LaUatTsuiNW9th9GRo4e2nEaU8atB5uEc36N0k8T6V8oR6bdVpgmdOeREuW1PGTnS6LIk-Y5TGvwwZzImpxFTkj9yhoxT9nCFPZhwUwb02qUTsNXoiBNhaWE0HBY9",
-    label: "Tendon-Driven",
+    src: "/images/carousel/2.jpg",
+    label: "Image 2",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuB9ibr8IBbRozyR4JsKSLzXGmURZOMiFhGhcLDQsWMAFWAY-TOaRuaxA-G6cc4LE6XrCrjCcXiJ7G-Yydp8IYVZKyNy8z5NviacDz3Gef-dJNg52U3c1ATx5p6pTPE6H3ZyyNz7rpzV0OaxLC1NYNN-gtXaizCcxdSWw44K-bR90NjB-TxEM3B6QAPDzPHIgrJC71XpWAAEn3b-eBMELxWR2Ignglh02cuiqjNguYN7cebLRMR1wqeNykgAFuECHvQ-_KTeWGny4H46",
-    label: "Gentle",
+    src: "/images/carousel/3.jpg",
+    label: "Image 3",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDIrJgV0xIfiA5mbRev5GgG0ek0JgYZETsYuoIMT3pi7qbpVQqdDG6fzBxvin3bqsu4Z-qt4wOOds65HsC3lwWjp_rcuOZb9oySk5AnQgcwkYmYzFTA2JY0wHhSK8HKqsYTAv7GQcg-LaH-7qEOytdNWXqivOUMec2XLTGlH4oislTDjfur_dCPK2M8dy2F-FblbHDo0XsTgVq-SQRvPITzV7xHPBFQ6Uk4dUB_-ftuLryU0U-JJMzKoiY2atoSMH8ZMagFgvQC1u7l",
-    label: "Bottom Left",
+    src: "/images/carousel/4.jpg",
+    label: "Image 4",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuC1yBADLVWuYiPZTbYoHx-L3wshm4mPYR5RpDvorYwsugoqW3472hgkxHbSifJZOlQBEhGNTtcr_6w_plrAKUpi_-UULHGel4xsSf1DbN2_3s_HCDe1nqIrhtT4F2ND68LXmTAuabIJd6XnuHMwB67gvPKUdyWhMpD4Mv9MccztasiOn--uhqIB5dS7XPRjhbc6rPq8-vA4Ln-V_8JGon9_GpA_An8cCObrVduUHIp6j4pnluTh28EF_yoc2unhzcTywzuxVxMQul0X",
-    label: "Bottom Center Left",
+    src: "/images/carousel/5.jpg",
+    label: "Image 5",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAWHxM2Ky2YquhLdRVrKCb2AHi3fiNk1fOzTAtlBNFmVbTVvs3hvAC2JenMBAyjz_EIEK1hiomIxBNOTzsQ8RvIe1--H-EPtH6xwhnaLujMNVS60Jp6ElI9AwwViyry5uWjj9I9YBqb0NN2CTfhAj6KzAfJaX1D-R5RXpj5wLgpaFmSkFDagSzh4Rm4kkv0ehpqq9bEWeDzbM9ubEaPlQNwcWxFa6uY_7xFJ0Kx10Ezkpa3p6Dt8TPf29wf5ofqDOecxo5YrDMLjlV4",
-    label: "Bottom Center Right",
+    src: "/images/carousel/6.jpg",
+    label: "Image 6",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBPD48sT5-93yVPlxrU7FKTcIsSHmQ897X0Efux_X4FYEI_e3VfAsDyzoD2O5zZg-JqFWO2SMLVpXsV1-xw8SiFKaviq8BfxfBq1QMx-lFPExV63dG291kNlbpVFIGKvniOE65IcNhPujiWm7TGJE65IUCB7tN-u2e3wn2SIIEHBrw16bFDs_hBPpIk5Mfr61ubLfOzMqPn4Qihf-IZPeLZ23jO0sJ-rJFdWayR-HZPN8DaRoDD0d1QNb69dWoqPFRb2MQTAgyMdFxB",
-    label: "Bottom Right",
+    src: "/images/carousel/7.jpg",
+    label: "Image 7",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCj1OseGoDnvRI9MDwk676cQPCrRDOYp7BSS0coDwoP2ghQX0LGNBLwAp0uOgqXmvG_8bgIqotoWSKn74nIRhi7UQciTxw1xHP4qgmcty0z59o8GsUppZQ0sUj2bLknPF51gqqJrM32PR1vCq1828RdMMmW9Lm8eRxJKEI69qlNZyt5ksHYXdbWz6eLek9sM6bohlyA567bMcGU7fa5BqPbryPDnPo5Pn2JFL-F5mOJ27A5vT1lLCzTmS3m6ypZMeoVQs0kym-gJiJC",
-    label: "Top Right",
+    src: "/images/carousel/8.jpg",
+    label: "Image 8",
+  },
+  {
+    src: "/images/carousel/9.jpg",
+    label: "Image 9",
+  },
+  {
+    src: "/images/carousel/10.jpg",
+    label: "Image 10",
+  },
+  {
+    src: "/images/carousel/11.jpg",
+    label: "Image 11",
+  },
+  {
+    src: "/images/carousel/12.jpg",
+    label: "Image 12",
   },
 ];
 
