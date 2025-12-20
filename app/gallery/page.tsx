@@ -83,9 +83,9 @@ export default function GalleryPage() {
                       backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 40%), url("${item.url}")`,
                     }}
                   >
-                    <p className="text-white text-base font-bold leading-tight line-clamp-3 transform transition-transform duration-300 group-hover:-translate-y-1">
+                    {/* <p className="text-white text-base font-bold leading-tight line-clamp-3 transform transition-transform duration-300 group-hover:-translate-y-1">
                       {item.title}
-                    </p>
+                    </p> */}
                   </div>
                 </a>
               ))}

@@ -175,11 +175,11 @@ export default function Carousel({ items, autoPlay = false, intervalMs = 6000 }:
                 style={{ width: cardWidth }}
               >
                 <Image src={img.src} alt={img.alt ?? img.label ?? ""} width={1200} height={800} className="h-full w-full object-cover" />
-                {img.label && (
+                {/* {img.label && (
                   <span className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/60 text-white text-xs px-3 py-1.5 rounded-full">
                     {img.label}
                   </span>
-                )}
+                )} */}
               </div>
             ))}
           </motion.div>
