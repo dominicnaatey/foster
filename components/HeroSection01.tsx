@@ -319,10 +319,10 @@ export default function HeroSection01({
             }}
           >
             <motion.div variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}>
-              <Button variant="hero" size="xl" href="/about"	>Learn More</Button>
+              <Button variant="hero" size="xl" href={learnMoreHref}>Learn More</Button>
             </motion.div>
             <motion.div variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}>
-              <Button variant="hero-outline" size="xl" href="/contact">Get Involved</Button>
+              <Button variant="hero-outline" size="xl" href={getInvolvedHref}>Get Involved</Button>
             </motion.div>
           </motion.div>
         </motion.div>
