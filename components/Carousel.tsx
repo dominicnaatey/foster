@@ -171,7 +171,7 @@ export default function Carousel({ items, autoPlay = false, intervalMs = 6000 }:
             {looped.map((img, i) => (
               <div
                 key={`${i}-${i % base}`}
-                className="relative shrink-0 rounded-[32px] overflow-hidden shadow-lg"
+                className="relative shrink-0 rounded-[32px] overflow-hidden shadow-lg aspect-square"
                 style={{ width: cardWidth }}
               >
                 <Image src={img.src} alt={img.alt ?? img.label ?? ""} width={1200} height={800} className="h-full w-full object-cover" />
