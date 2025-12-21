@@ -38,12 +38,12 @@ export default function HeroAbout() {
           </p>
         </div>
 
-        <div className={`max-w-6xl mx-auto absolute bottom-0 md:top-160 left-0 right-0 z-10`}>
+        <div className={`max-w-6xl mx-auto absolute top-100 md:top-150 left-0 right-0 z-10`}>
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-end">
             {images.map((img, idx) => (
               <motion.div
-                className="w-1/4 px-2"
+                className={`px-2 ${idx >= 2 ? "hidden md:block" : ""} w-1/2 md:w-1/4`}
                 key={idx}
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: [0, -15, 0], opacity: 1 }}
