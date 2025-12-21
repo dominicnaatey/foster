@@ -45,13 +45,16 @@ export default function HeroAbout() {
               <motion.div
                 className="w-1/4 px-2"
                 key={idx}
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: [0, -15, 0], opacity: 1 }}
                 transition={{
-                  type: "spring",
-                  bounce: 0.5,
-                  duration: 0.8,
-                  delay: idx * 0.1,
+                  opacity: { duration: 0.8, delay: idx * 0.2 },
+                  y: {
+                    repeat: Infinity,
+                    duration: 3 + (idx % 2) + idx * 0.3,
+                    ease: "easeInOut",
+                    delay: idx * 0.2,
+                  },
                 }}
               >
                 <div className={`relative overflow-hidden rounded-lg md:rounded-xl ${img.aspectRatio}`}>
