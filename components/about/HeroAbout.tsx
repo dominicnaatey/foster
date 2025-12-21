@@ -45,22 +45,26 @@ export default function HeroAbout() {
               <motion.div
                 className={`px-2 ${idx >= 2 ? "hidden md:block" : ""} w-1/2 md:w-1/4`}
                 key={idx}
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: [0, -15, 0], opacity: 1 }}
+                initial={{ y: 200, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
                 transition={{
-                  opacity: { duration: 0.8, delay: idx * 0.2 },
-                  y: {
-                    repeat: Infinity,
-                    duration: 3 + (idx % 2) + idx * 0.3,
-                    ease: "easeInOut",
-                    delay: idx * 0.2,
-                  },
+                  ease: "easeOut",
+                  duration: 0.8,
+                  delay: idx * 0.2,
                 }}
               >
-                <div className={`relative overflow-hidden rounded-lg md:rounded-xl ${img.aspectRatio}`}>
+                <motion.div
+                  className={`relative overflow-hidden rounded-lg md:rounded-xl ${img.aspectRatio}`}
+                  animate={{ y: [0, -15, 0] }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 3 + (idx % 2) + idx * 0.4,
+                    ease: "easeInOut",
+                  }}
+                >
                   <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent z-10" />
                   <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
