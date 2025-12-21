@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 export default function HeroAbout() {
   const images = [
     {
@@ -38,12 +42,23 @@ export default function HeroAbout() {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-end">
             {images.map((img, idx) => (
-              <div className="w-1/4 px-2" key={idx}>
+              <motion.div
+                className="w-1/4 px-2"
+                key={idx}
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{
+                  type: "spring",
+                  bounce: 0.5,
+                  duration: 0.8,
+                  delay: idx * 0.1,
+                }}
+              >
                 <div className={`relative overflow-hidden rounded-lg md:rounded-xl ${img.aspectRatio}`}>
                   <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent z-10" />
                   <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
