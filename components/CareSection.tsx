@@ -9,7 +9,7 @@ export default function CareSection() {
             Trauma informed care with person-centered practices focused on reunification and/or a new sustainable beginning.
           </p>
           <div className="flex justify-center">
-            <Button href="./about" variant="black">Learn More</Button>
+            <Button href="/about" variant="black">Learn More</Button>
           </div>
         </div>
       </div>

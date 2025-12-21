@@ -16,7 +16,7 @@ export default function GetInvolved() {
               We're excited to have you join the team!`}
           </p>
           <div className="flex items-center gap-4 justify-center md:justify-start">
-            <Button href="#cta" variant="black">
+            <Button href="/contact" variant="black">
               Apply Now
             </Button>
           </div>

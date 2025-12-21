@@ -30,8 +30,8 @@ export default function HeroSection() {
               Providing therapeutic enrichment and stable community-based care for boys ages 9–18
             </p>
             <div className="flex items-center gap-4 justify-center md:justify-start">
-              <Button href="#cta" variant="black">Get Involved</Button>
-              <Button href="#how-it-works" variant="outline">Learn More</Button>
+              <Button href="/contact" variant="black">Get Involved</Button>
+              <Button href="/about" variant="outline">Learn More</Button>
             </div>
           </div>
         </div>

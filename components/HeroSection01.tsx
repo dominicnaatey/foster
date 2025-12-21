@@ -224,8 +224,8 @@ type HeroSection02Props = {
 };
 
 export default function HeroSection01({
-  learnMoreHref = "#",
-  getInvolvedHref = "#",
+  learnMoreHref = "/about",
+  getInvolvedHref = "/contact",
   className,
   images = [
     {
