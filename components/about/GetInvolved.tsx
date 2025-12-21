@@ -25,7 +25,7 @@ export default function GetInvolved() {
         <div className="w-full order-1 md:order-2">
           <div className="relative overflow-hidden rounded-2xl">
             <Image
-              src="/hero-bg.jpg"
+              src="/images/getInvolved/1.jpg"
               alt="Community group"
               width={960}
               height={720}
