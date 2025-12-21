@@ -3,7 +3,7 @@ import Button from "@/components/Button";
 
 export default function AboutCopy() {
   return (
-    <section className="bg-white md:mt-40">
+    <section className="bg-white mt-16 md:mt-40">
       <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <p className="text-slate-800 text-base md:text-lg leading-relaxed">
