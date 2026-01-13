@@ -33,7 +33,7 @@ export default function Navbar() {
           <Link href="/" className={pathname === "/" ? "text-black" : "text-gray-700 hover:text-gray-900"}>Home</Link>
           <Link href="/about" className={pathname.startsWith("/about") ? "text-black" : "text-gray-700 hover:text-gray-900"}>About Us</Link>
           <Link href="/gallery" className={pathname.startsWith("/gallery") ? "text-black" : "text-gray-700 hover:text-gray-900"}>Gallery</Link>
-          <Link href="/blog" className={pathname.startsWith("/blog") ? "text-black" : "text-gray-700 hover:text-gray-900"}>Blog</Link>
+          {/* <Link href="/blog" className={pathname.startsWith("/blog") ? "text-black" : "text-gray-700 hover:text-gray-900"}>Blog</Link> */}
           <Link href="/contact" className={pathname.startsWith("/contact") ? "text-black" : "text-gray-700 hover:text-gray-900"}>Contact</Link>
         </div>
         <div className="flex items-center gap-3">

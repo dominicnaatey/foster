@@ -81,7 +81,7 @@ export default function PopupMenu({ open, onClose }: PopupMenuProps) {
             </Link>
           </li>
           <div className="border-b border-gray-200" />
-          <li>
+          {/* <li>
             <Link
               href="/blog"
               className="block py-0 text-base text-gray-800"
@@ -90,7 +90,7 @@ export default function PopupMenu({ open, onClose }: PopupMenuProps) {
               Blog
             </Link>
           </li>
-          <div className="border-b border-gray-200" />
+          <div className="border-b border-gray-200" /> */}
           <li>
             <Link
               href="/contact"
