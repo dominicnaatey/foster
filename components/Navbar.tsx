@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useState, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import Button from "@/components/Button";
 import PopupMenu from "@/components/PopupMenu";
 
 export default function Navbar() {

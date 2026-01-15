@@ -3,7 +3,6 @@
 import React from "react";
 import HeroSection01 from "@/components/HeroSection01";
 import CareSection from "@/components/CareSection";
-import BlogSection from "@/components/BlogSection";
 import CtaSection from "@/components/CtaSection";
 import ServicesSection from "@/components/ServicesSection";
 import Carousel from "@/components/Carousel";
