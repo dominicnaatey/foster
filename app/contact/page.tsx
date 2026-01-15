@@ -13,7 +13,6 @@ export default function ContactPage() {
         <div className="flex flex-col w-full max-w-6xl">
           <ContactHero />
           <ContactIntro />
-
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 p-4 mt-8">
             <ContactForm />
             <ContactSidebar />

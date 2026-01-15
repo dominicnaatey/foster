@@ -47,12 +47,21 @@ export default function ContactSidebar() {
         </div>
       </div>
       <div className="flex flex-col gap-4">
-        <h3 className="text-slate-900 text-xl font-bold">Hours</h3>
-        <ul className="space-y-2 text-slate-700">
-          <li className="flex justify-between"><span>Monday - Thursday</span> <span>8:00 AM - 4:00 PM CST</span></li>
-          <li className="flex justify-between"><span>Friday</span> <span>8:00 AM – 12:00 PM CST</span></li>
-          <li className="flex justify-between"><span>Saturday - Sunday</span> <span className="text-slate-500">Closed</span></li>
-        </ul>
+        <h3 className="text-slate-900 text-xl font-bold"></h3>
+        <div className="space-y-2 text-slate-700 text-base">
+          <>
+          <p>
+            If interested in a job send resume to{" "}
+            <span className="text-primary font-semibold">careers@anewdirectionforyouth.org</span>
+            </p>
+          </>
+          <>
+          <p>
+            If interested in placement of a youth in our program please contact{" "}
+            <span className="text-primary font-semibold">admissions@anewdirectionforyouth.org</span>
+          </p>
+          </>
+        </div>
       </div>
       {/* <div className="bg-primary/10 p-6 rounded-lg flex flex-col gap-3">
         <div className="flex items-center gap-3">
