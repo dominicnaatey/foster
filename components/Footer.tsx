@@ -4,7 +4,7 @@ import { GlobeAltIcon, CurrencyDollarIcon } from "@heroicons/react/24/outline";
 
 export default function Footer() {
   return (
-    <footer className="bg-white dark:bg-background-dark border-t border-gray-100 dark:border-gray-800 pt-16 pb-8">
+    <footer className="bg-white  border-t border-gray-100 pt-8 md:pt-16 pb-8">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-8">
           <div className="col-span-2 lg:col-span-2">
@@ -39,11 +39,8 @@ export default function Footer() {
               ))}
             </div> */}
           </div>
-          <div className="col-span-2 sm:col-span-1 lg:col-span-1">
-          </div>
-          <div className="col-span-2 sm:col-span-1 lg:col-span-1">
-          </div>
-          <div className="col-span-2 sm:col-span-1 lg:col-span-1">
+          
+          <div className="col-span-2 sm:col-span-1 md:col-span-1 md:col-start-2 lg:col-span-1 lg:col-start-5">
             <h4 className="font-semibold text-[#111318] dark:text-white mb-4 text-sm uppercase tracking-wide">
               Quick Links
             </h4>
