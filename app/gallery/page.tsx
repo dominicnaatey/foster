@@ -9,8 +9,8 @@ import "lightgallery/css/lg-thumbnail.css";
 export default function GalleryPage() {
   return (
     <div className="font-display bg-gray-50 text-[#0d141b] min-h-screen flex flex-col">
-      <main className="flex-1 px-4 sm:px-8 md:px-20 lg:px-40 py-5 flex justify-center">
-        <div className="w-full max-w-[960px]">
+      <main className="flex-1 px-4 md:px-16 py-5 flex justify-center">
+        <div className="w-full max-w-7xl">
           {/* Page Heading */}
           <div className="flex flex-wrap justify-between gap-3 p-4 sm:p-6 md:p-8">
             <div className="flex min-w-72 flex-col gap-3 text-center sm:text-left">
@@ -24,7 +24,7 @@ export default function GalleryPage() {
             </div>
           </div>
 
-          <div className="columns-2 md:columns-4 gap-4 p-4">
+          <div className="columns-2 md:columns-4 gap-4 md:p-4">
             <LG
               selector=".gallery-item"
               plugins={[lgThumbnail]}
