@@ -7,9 +7,6 @@ import "lightgallery/css/lightgallery.css";
 import "lightgallery/css/lg-thumbnail.css";
 
 export default function GalleryPage() {
-  const [activeTab, setActiveTab] = React.useState<
-    "All" | "Events" | "Success Stories" | "Our Homes" | "Community"
-  >("All");
   return (
     <div className="font-display bg-gray-50 text-[#0d141b] min-h-screen flex flex-col">
       <main className="flex-1 px-4 sm:px-8 md:px-20 lg:px-40 py-5 flex justify-center">
@@ -24,28 +21,6 @@ export default function GalleryPage() {
                 Explore the moments that shape our journey and celebrate the
                 connections we build every day.
               </p>
-            </div>
-          </div>
-
-          {/* Chips */}
-          <div className="px-4 sm:px-6">
-            <div className="tabs-scroll flex gap-2 justify-start overflow-x-auto overscroll-contain touch-pan-x whitespace-nowrap -mx-4 px-4 sm:mx-0 sm:px-0 snap-x snap-mandatory md:overflow-visible md:whitespace-normal">
-              {(["All", "Events", "Success Stories", "Our Homes", "Community"] as const).map((tab) => (
-                <button
-                  key={tab}
-                  role="tab"
-                  aria-selected={activeTab === tab}
-                  className={
-                    `inline-flex items-center rounded-full px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30 shrink-0 snap-start ` +
-                    (activeTab === tab
-                      ? "bg-black text-white shadow-sm"
-                      : "bg-slate-200 text-[#0d141b] hover:bg-slate-300")
-                  }
-                  onClick={() => setActiveTab(tab)}
-                >
-                  {tab}
-                </button>
-              ))}
             </div>
           </div>
 
@@ -65,7 +40,7 @@ export default function GalleryPage() {
               allowMediaOverlap={false}
               subHtmlSelectorRelative={true}
             >
-              {(activeTab === "All" ? IMAGES : IMAGES.filter((it) => it.category === activeTab)).map((item, i) => (
+              {IMAGES.map((item, i) => (
                 <a
                   key={i}
                   className="gallery-item block mb-4 break-inside-avoid rounded-xl overflow-hidden group cursor-pointer relative"
@@ -101,6 +76,12 @@ export default function GalleryPage() {
 
 const IMAGES = [
   {
+    title: "Event Celebration",
+    url: "/images/gallery/5.jpg",
+    aspect: "aspect-[9/16]",
+    category: "Events",
+  },
+  {
     title: "Summer Picnic Fun",
     url: "/images/gallery/1.jpg",
     aspect: "aspect-[3/4]",
@@ -123,12 +104,6 @@ const IMAGES = [
     url: "/images/gallery/4.jpg",
     aspect: "aspect-[16/9]",
     category: "Community",
-  },
-  {
-    title: "Event Celebration",
-    url: "/images/gallery/5.jpg",
-    aspect: "aspect-[9/16]",
-    category: "Events",
   },
   {
     title: "Outdoor Activity",
